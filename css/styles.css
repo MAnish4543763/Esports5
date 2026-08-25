@@ -36,23 +36,12 @@ body {
 
     width: 100%;
 
-    /*
-        IMPORTANT:
-
-        This controls the total height of your navbar.
-
-        Mobile:
-        100px
-
-        Desktop:
-        80px
-    */
-
     height: 100px;
 
     background: #050505;
 
     display: flex;
+
     align-items: stretch;
 
     position: relative;
@@ -64,35 +53,35 @@ body {
 
 
 /* =========================================================
-   LOGO AREA
+   LEFT LOGO SECTION
 
-   MOBILE:
-   EXACTLY 20% OF NAVBAR WIDTH
+   THIS IS THE IMPORTANT CHANGE.
 
-   HEIGHT:
-   100% OF NAVBAR
+   The logo has its OWN 20% section.
 
+   It is not sharing space with LOGIN/SIGN UP.
+
+   20% width
+   100% height
 ========================================================= */
 
-.navbar-logo {
+.navbar-logo-section {
 
     width: 20%;
 
     height: 100%;
 
-    flex-shrink: 0;
+    flex: 0 0 20%;
 
     display: flex;
 
     align-items: center;
 
-    justify-content: flex-start;
-
-    padding-left: 10px;
-
-    padding-right: 5px;
+    justify-content: center;
 
     overflow: hidden;
+
+    border-right: 1px solid #0f0f0f;
 }
 
 
@@ -100,7 +89,7 @@ body {
    LOGO CONTAINER
 ========================================================= */
 
-.logo-mark {
+.navbar-logo {
 
     width: 100%;
 
@@ -110,68 +99,55 @@ body {
 
     align-items: center;
 
-    justify-content: flex-start;
+    justify-content: center;
 
+    overflow: hidden;
 }
 
 
 /* =========================================================
    LOGO IMAGE
 
-   The image fills the logo area while maintaining
-   its original proportions.
+   The image stays proportional.
+
+   It is enlarged slightly so it is more visible on
+   mobile screens.
+
 ========================================================= */
 
-.logo-mark img {
+.navbar-logo img {
 
-    width: 100%;
+    width: 115%;
 
-    height: 100%;
+    height: 115%;
 
     max-width: none;
 
+    display: block;
+
     object-fit: contain;
 
-    object-position: left center;
+    object-position: center;
 
-    display: block;
+    transform: scale(1.05);
 }
 
 
 /* =========================================================
-   RIGHT SIDE
+   RIGHT NAVIGATION SECTION
 
-   Contains:
-   LOGIN
-   SIGN UP
-   HAMBURGER
+   Remaining 80%
 ========================================================= */
 
-.navbar-right {
+.navbar-right-section {
 
-    flex: 1;
+    width: 80%;
 
     height: 100%;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    gap: 12px;
-
-    padding-right: 18px;
+    flex: 1;
 
     min-width: 0;
-}
-
-
-/* =========================================================
-   LOGIN / SIGN UP CONTAINER
-========================================================= */
-
-.navbar-auth {
 
     display: flex;
 
@@ -181,12 +157,23 @@ body {
 
     gap: 10px;
 
+    padding-right: 12px;
 }
 
 
 /* =========================================================
-   LOGIN + SIGN UP COMMON STYLE
+   LOGIN / SIGN UP
 ========================================================= */
+
+.navbar-auth {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
 
 .navbar-login,
 .navbar-signup {
@@ -199,28 +186,24 @@ body {
 
     justify-content: center;
 
-    padding: 0 22px;
+    padding: 0 20px;
 
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 900;
 
     letter-spacing: 1px;
 
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
-
     white-space: nowrap;
 
+    transition: 0.25s ease;
 }
 
 
 /* =========================================================
-   LOGIN
+   LOGIN BUTTON
 ========================================================= */
 
 .navbar-login {
@@ -230,7 +213,6 @@ body {
     border: 2px solid #ffc400;
 
     color: #ffffff;
-
 }
 
 
@@ -239,12 +221,11 @@ body {
     background: #ffc400;
 
     color: #050505;
-
 }
 
 
 /* =========================================================
-   SIGN UP
+   SIGN UP BUTTON
 ========================================================= */
 
 .navbar-signup {
@@ -254,7 +235,6 @@ body {
     border: 2px solid #ffc400;
 
     color: #050505;
-
 }
 
 
@@ -263,39 +243,50 @@ body {
     background: #ffffff;
 
     border-color: #ffffff;
-
 }
 
 
 /* =========================================================
-   PROFILE
+   NAVBAR PROFILE
+
+   HIDDEN BEFORE LOGIN
 ========================================================= */
 
 .navbar-profile {
 
     position: relative;
 
+    width: 70px;
+
+    height: 55px;
+
     display: none;
 
     align-items: center;
 
-    margin-right: 5px;
-
+    justify-content: center;
 }
 
+
+/* =========================================================
+   SHOW PROFILE AFTER LOGIN
+========================================================= */
 
 .navbar-profile.active {
 
     display: flex;
-
 }
 
 
+/* =========================================================
+   PROFILE BUTTON
+========================================================= */
+
 .profile-button {
 
-    width: 44px;
+    width: 48px;
 
-    height: 44px;
+    height: 48px;
 
     display: flex;
 
@@ -303,27 +294,35 @@ body {
 
     justify-content: center;
 
+    background: #111111;
+
     border: 2px solid #ffc400;
 
     border-radius: 50%;
-
-    background: #111111;
 
     color: #ffc400;
 
     cursor: pointer;
 
+    transition: 0.25s ease;
+}
+
+
+.profile-button:hover {
+
+    background: #ffc400;
+
+    color: #050505;
 }
 
 
 .profile-button svg {
 
-    width: 24px;
+    width: 25px;
 
-    height: 24px;
+    height: 25px;
 
     fill: currentColor;
-
 }
 
 
@@ -335,7 +334,7 @@ body {
 
     position: absolute;
 
-    top: 55px;
+    top: 62px;
 
     right: 0;
 
@@ -357,8 +356,7 @@ body {
 
     transition: 0.25s ease;
 
-    z-index: 1200;
-
+    z-index: 1300;
 }
 
 
@@ -369,7 +367,6 @@ body {
     visibility: visible;
 
     transform: translateY(0);
-
 }
 
 
@@ -384,7 +381,6 @@ body {
     letter-spacing: 2px;
 
     margin-bottom: 8px;
-
 }
 
 
@@ -394,12 +390,11 @@ body {
 
     font-size: 17px;
 
-    font-weight: 800;
+    font-weight: 900;
 
     margin-bottom: 16px;
 
     word-break: break-word;
-
 }
 
 
@@ -412,7 +407,6 @@ body {
     background: #333333;
 
     margin-bottom: 15px;
-
 }
 
 
@@ -429,14 +423,12 @@ body {
     font-weight: 700;
 
     margin-bottom: 13px;
-
 }
 
 
 .profile-dropdown-link:hover {
 
     color: #ffc400;
-
 }
 
 
@@ -459,7 +451,6 @@ body {
     font-weight: 800;
 
     cursor: pointer;
-
 }
 
 
@@ -468,19 +459,18 @@ body {
     background: #ff2020;
 
     color: #ffffff;
-
 }
 
 
 /* =========================================================
-   HAMBURGER MENU
+   HAMBURGER
 
-   ONLY ONE HAMBURGER BUTTON
+   ONLY ONE HAMBURGER EXISTS.
 ========================================================= */
 
 .menu-toggle {
 
-    width: 50px;
+    width: 45px;
 
     height: 50px;
 
@@ -492,9 +482,9 @@ body {
 
     flex-direction: column;
 
-    justify-content: center;
-
     align-items: center;
+
+    justify-content: center;
 
     gap: 7px;
 
@@ -506,7 +496,7 @@ body {
 
     flex-shrink: 0;
 
-    z-index: 1200;
+    z-index: 1300;
 }
 
 
@@ -516,17 +506,15 @@ body {
 
 .menu-toggle span {
 
-    display: block;
-
-    width: 38px;
+    width: 34px;
 
     height: 3px;
 
+    display: block;
+
     background: #ff2020;
 
-    transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
+    transition: 0.3s ease;
 }
 
 
@@ -539,14 +527,12 @@ body {
     transform:
         translateY(10px)
         rotate(45deg);
-
 }
 
 
 .menu-toggle.active span:nth-child(2) {
 
     opacity: 0;
-
 }
 
 
@@ -555,13 +541,12 @@ body {
     transform:
         translateY(-10px)
         rotate(-45deg);
-
 }
 
 
 /* =========================================================
    MODULE 2
-   MENU OVERLAY
+   DARK OVERLAY
 ========================================================= */
 
 .menu-overlay {
@@ -587,11 +572,11 @@ body {
     opacity: 1;
 
     visibility: visible;
-
 }
 
 
 /* =========================================================
+   MODULE 3
    SIDE MENU
 ========================================================= */
 
@@ -605,7 +590,7 @@ body {
 
     width: 360px;
 
-    max-width: 90vw;
+    max-width: 88vw;
 
     height: 100vh;
 
@@ -619,7 +604,7 @@ body {
         transform 0.4s
         cubic-bezier(0.77, 0, 0.175, 1);
 
-    z-index: 1150;
+    z-index: 1200;
 
     overflow-y: auto;
 }
@@ -628,7 +613,6 @@ body {
 .side-menu.active {
 
     transform: translateX(0);
-
 }
 
 
@@ -639,12 +623,11 @@ body {
 .side-menu-content {
 
     padding: 120px 35px 40px;
-
 }
 
 
 /* =========================================================
-   MENU HEADING
+   MENU TITLE
 ========================================================= */
 
 .menu-heading {
@@ -658,7 +641,6 @@ body {
     letter-spacing: 2px;
 
     margin-bottom: 14px;
-
 }
 
 
@@ -671,31 +653,153 @@ body {
     background: #353535;
 
     margin-bottom: 25px;
-
 }
 
 
 /* =========================================================
-   SIDE MENU AUTH
+   SIDE PROFILE
+
+   PROFILE IS ABOVE LOGIN / SIGN UP
+========================================================= */
+
+.side-profile {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   PROFILE LINK
+========================================================= */
+
+.side-profile-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   PROFILE ICON
+========================================================= */
+
+.side-profile-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #151515;
+
+    border: 2px solid #ffc400;
+
+    border-radius: 50%;
+
+    color: #ffc400;
+
+    transition: 0.25s ease;
+}
+
+
+.side-profile-button:hover
+.side-profile-icon {
+
+    background: #ffc400;
+
+    color: #050505;
+}
+
+
+.side-profile-icon svg {
+
+    width: 26px;
+
+    height: 26px;
+
+    fill: currentColor;
+}
+
+
+/* =========================================================
+   PROFILE TEXT
+========================================================= */
+
+.side-profile-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.side-profile-label {
+
+    color: #ffc400;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.8px;
+}
+
+
+.side-profile-name {
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   AUTH / TEAM AREA
 ========================================================= */
 
 .menu-auth-container {
 
     width: 100%;
 
-    margin-bottom: 38px;
-
+    margin-bottom: 40px;
 }
 
 
+/* =========================================================
+   LOGIN / SIGN UP BUTTONS
+========================================================= */
+
 .menu-auth-buttons {
+
+    width: 100%;
 
     display: flex;
 
     gap: 10px;
-
-    width: 100%;
-
 }
 
 
@@ -719,7 +823,6 @@ body {
     font-weight: 900;
 
     letter-spacing: 1px;
-
 }
 
 
@@ -730,7 +833,6 @@ body {
     border: 1px solid #ffc400;
 
     color: #ffffff;
-
 }
 
 
@@ -741,7 +843,6 @@ body {
     border: 1px solid #ffc400;
 
     color: #050505;
-
 }
 
 
@@ -750,7 +851,6 @@ body {
     background: #ffc400;
 
     color: #050505;
-
 }
 
 
@@ -759,98 +859,77 @@ body {
     background: #ffffff;
 
     border-color: #ffffff;
-
 }
 
 
 /* =========================================================
-   SIDE MENU PROFILE
+   TEAM CONTAINER
+
+   HIDDEN BEFORE LOGIN
 ========================================================= */
 
-.menu-profile {
+.menu-team-container {
 
-    display: flex;
+    display: none;
 
-    align-items: center;
+    width: 100%;
 
-    gap: 14px;
+    padding: 13px 15px;
 
-    margin-bottom: 35px;
+    background: #111111;
 
+    border-left: 2px solid #ffc400;
 }
 
 
-.menu-profile-icon {
+/* =========================================================
+   SHOW TEAM AFTER LOGIN
+========================================================= */
 
-    width: 48px;
+.menu-team-container.active {
 
-    height: 48px;
+    display: block;
+}
 
-    display: flex;
 
-    align-items: center;
+/* =========================================================
+   TEAM LABEL
+========================================================= */
 
-    justify-content: center;
-
-    border: 2px solid #ffc400;
-
-    border-radius: 50%;
-
-    background: #151515;
+.menu-team-label {
 
     color: #ffc400;
 
-}
-
-
-.menu-profile-icon svg {
-
-    width: 25px;
-
-    height: 25px;
-
-    fill: currentColor;
-
-}
-
-
-.menu-profile-info {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-
-}
-
-
-.menu-profile-label {
-
-    color: #ffc400;
-
-    font-size: 10px;
+    font-size: 9px;
 
     font-weight: 900;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 
-}
-
-
-.menu-profile-name {
-
-    color: #ffffff;
-
-    font-size: 15px;
-
-    font-weight: 800;
-
+    margin-bottom: 5px;
 }
 
 
 /* =========================================================
-   SIDE MENU NAVIGATION
+   TEAM NAME
+========================================================= */
+
+.menu-team-name {
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
 ========================================================= */
 
 .menu-navigation {
@@ -860,7 +939,6 @@ body {
     flex-direction: column;
 
     gap: 30px;
-
 }
 
 
@@ -877,7 +955,6 @@ body {
     transition:
         color 0.25s ease,
         transform 0.25s ease;
-
 }
 
 
@@ -886,7 +963,6 @@ body {
     color: #ff2020;
 
     transform: translateX(6px);
-
 }
 
 
@@ -901,7 +977,6 @@ body {
     min-height: 300px;
 
     border-bottom: 1px solid #151515;
-
 }
 
 
@@ -914,34 +989,28 @@ body {
     .main-navbar {
 
         height: 90px;
-
     }
 
 
-    .navbar-logo {
+    /*
+        Keep logo section at 20%
+    */
+
+    .navbar-logo-section {
 
         width: 20%;
 
-        padding-left: 7px;
-
-        padding-right: 3px;
-
+        flex-basis: 20%;
     }
 
 
-    .navbar-right {
+    .navbar-right-section {
 
-        padding-right: 10px;
+        width: 80%;
 
-        gap: 6px;
+        padding-right: 7px;
 
-    }
-
-
-    .navbar-auth {
-
-        gap: 6px;
-
+        gap: 5px;
     }
 
 
@@ -950,83 +1019,107 @@ body {
 
         height: 44px;
 
-        padding: 0 14px;
+        padding: 0 13px;
 
-        font-size: 12px;
+        font-size: 11px;
+    }
 
+
+    .navbar-auth {
+
+        gap: 6px;
+    }
+
+
+    .navbar-profile {
+
+        width: 55px;
+    }
+
+
+    .profile-button {
+
+        width: 44px;
+
+        height: 44px;
     }
 
 
     .menu-toggle {
 
-        width: 45px;
+        width: 42px;
 
-        height: 45px;
-
+        height: 46px;
     }
 
 
     .menu-toggle span {
 
-        width: 34px;
-
-        height: 3px;
-
+        width: 31px;
     }
-
 }
 
 
 /* =========================================================
-   MOBILE PHONE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 480px) {
 
     /*
-        MAIN FOCUS:
-
-        Navbar remains large enough to show the logo properly.
+        NAVBAR
     */
 
     .main-navbar {
 
-        height: 100px;
-
+        height: 90px;
     }
 
 
     /*
-        LOGO = EXACTLY 20% OF SCREEN WIDTH
+        LEFT = EXACTLY 20%
     */
 
-    .navbar-logo {
+    .navbar-logo-section {
 
         width: 20%;
 
+        flex: 0 0 20%;
+
         height: 100%;
-
-        padding-left: 5px;
-
-        padding-right: 2px;
-
     }
 
 
     /*
-        RIGHT SIDE = REMAINING 80%
+        RIGHT = REMAINING 80%
     */
 
-    .navbar-right {
+    .navbar-right-section {
 
         width: 80%;
 
-        flex: 1;
+        height: 100%;
 
-        padding-right: 8px;
+        padding-right: 4px;
 
-        gap: 4px;
+        gap: 2px;
+    }
 
+
+    /*
+        MAKE LOGO VISUALLY LARGER
+
+        The image is allowed to extend slightly within
+        its dedicated logo section.
+    */
+
+    .navbar-logo img {
+
+        width: 145%;
+
+        height: 145%;
+
+        transform: scale(1.08);
     }
 
 
@@ -1036,16 +1129,15 @@ body {
 
     .navbar-login {
 
-        height: 48px;
+        height: 42px;
 
-        min-width: 70px;
+        min-width: 60px;
 
-        padding: 0 9px;
+        padding: 0 7px;
 
-        font-size: 11px;
+        font-size: 10px;
 
-        letter-spacing: 0.7px;
-
+        letter-spacing: 0.5px;
     }
 
 
@@ -1055,16 +1147,35 @@ body {
 
     .navbar-signup {
 
+        height: 42px;
+
+        min-width: 68px;
+
+        padding: 0 7px;
+
+        font-size: 10px;
+
+        letter-spacing: 0.5px;
+    }
+
+
+    /*
+        PROFILE AFTER LOGIN
+    */
+
+    .navbar-profile {
+
+        width: 55px;
+
         height: 48px;
+    }
 
-        min-width: 78px;
 
-        padding: 0 9px;
+    .profile-button {
 
-        font-size: 11px;
+        width: 43px;
 
-        letter-spacing: 0.7px;
-
+        height: 43px;
     }
 
 
@@ -1074,28 +1185,24 @@ body {
 
     .menu-toggle {
 
-        width: 42px;
+        width: 38px;
 
-        height: 48px;
-
-        margin-left: 1px;
+        height: 45px;
 
         gap: 6px;
-
     }
 
 
     .menu-toggle span {
 
-        width: 32px;
+        width: 29px;
 
         height: 3px;
-
     }
 
 
     /*
-        SIDE MENU ON MOBILE
+        SIDE MENU
     */
 
     .side-menu {
@@ -1103,33 +1210,50 @@ body {
         width: 85vw;
 
         max-width: 340px;
-
     }
 
 
     .side-menu-content {
 
         padding:
-            110px
+            105px
             25px
             35px;
-
     }
 
+
+    /*
+        SIDE PROFILE
+    */
+
+    .side-profile-icon {
+
+        width: 48px;
+
+        height: 48px;
+    }
+
+
+    .side-profile-name {
+
+        font-size: 15px;
+    }
+
+
+    /*
+        SIDE MENU LINKS
+    */
 
     .menu-navigation {
 
         gap: 25px;
-
     }
 
 
     .menu-navigation a {
 
         font-size: 18px;
-
     }
-
 }
 
 
@@ -1141,75 +1265,92 @@ body {
 
     .main-navbar {
 
-        height: 90px;
-
+        height: 85px;
     }
 
 
-    .navbar-logo {
+    .navbar-logo-section {
 
         width: 20%;
 
-        padding-left: 3px;
-
+        flex-basis: 20%;
     }
 
 
-    .navbar-right {
+    .navbar-right-section {
 
-        padding-right: 5px;
+        width: 80%;
 
-        gap: 2px;
+        padding-right: 2px;
 
+        gap: 1px;
+    }
+
+
+    .navbar-logo img {
+
+        width: 155%;
+
+        height: 155%;
     }
 
 
     .navbar-auth {
 
         gap: 3px;
-
     }
 
 
     .navbar-login {
 
-        min-width: 58px;
+        min-width: 54px;
 
-        height: 42px;
+        height: 39px;
 
-        padding: 0 6px;
+        padding: 0 5px;
 
         font-size: 9px;
-
     }
 
 
     .navbar-signup {
 
-        min-width: 66px;
+        min-width: 60px;
 
-        height: 42px;
+        height: 39px;
 
-        padding: 0 6px;
+        padding: 0 5px;
 
         font-size: 9px;
+    }
 
+
+    .navbar-profile {
+
+        width: 50px;
+    }
+
+
+    .profile-button {
+
+        width: 40px;
+
+        height: 40px;
     }
 
 
     .menu-toggle {
 
-        width: 36px;
+        width: 34px;
 
         height: 42px;
-
     }
 
 
     .menu-toggle span {
 
-        width: 28px;
+        width: 26px;
 
+        height: 3px;
     }
-
 }
