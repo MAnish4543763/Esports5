@@ -59,13 +59,6 @@ body {
     margin-right: 9px;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1;
-}
-
 .logo-title {
     color: #ff2020;
     font-size: 18px;
