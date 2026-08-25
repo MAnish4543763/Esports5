@@ -1,37 +1,292 @@
 /* =========================================================
    MANIFEST ESPORTS
-   NAVIGATION JAVASCRIPT
+   NAVIGATION + LOGIN STATE
 ========================================================= */
 
 
 /* =========================================================
-   GET NAVIGATION ELEMENTS
+   NAVIGATION ELEMENTS
 ========================================================= */
 
-const menuToggle = document.getElementById("menuToggle");
+const menuToggle =
+    document.getElementById("menuToggle");
 
-const sideMenu = document.getElementById("sideMenu");
+const sideMenu =
+    document.getElementById("sideMenu");
 
-const menuOverlay = document.getElementById("menuOverlay");
+const menuOverlay =
+    document.getElementById("menuOverlay");
 
 
 /* =========================================================
-   OPEN / CLOSE MENU FUNCTION
+   NAVBAR AUTH
 ========================================================= */
 
-function toggleMenu() {
+const navbarAuth =
+    document.getElementById("navbarAuth");
 
-    const isOpen =
-        sideMenu.classList.contains("active");
+const navbarProfile =
+    document.getElementById("navbarProfile");
 
 
-    if (isOpen) {
+/* =========================================================
+   PROFILE
+========================================================= */
 
-        closeMenu();
+const profileButton =
+    document.getElementById("profileButton");
 
-    } else {
+const profileDropdown =
+    document.getElementById("profileDropdown");
 
-        openMenu();
+const profileTeamName =
+    document.getElementById("profileTeamName");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+
+/* =========================================================
+   SIDE MENU PROFILE
+========================================================= */
+
+const sideProfileName =
+    document.getElementById("sideProfileName");
+
+
+/* =========================================================
+   SIDE MENU AUTH / TEAM
+========================================================= */
+
+const menuAuthContainer =
+    document.getElementById("menuAuthContainer");
+
+const menuAuthButtons =
+    document.getElementById("menuAuthButtons");
+
+const menuTeamContainer =
+    document.getElementById("menuTeamContainer");
+
+const menuTeamName =
+    document.getElementById("menuTeamName");
+
+
+/* =========================================================
+   CHECK IF USER IS LOGGED IN
+========================================================= */
+
+function isUserLoggedIn() {
+
+    return (
+        localStorage.getItem(
+            "manifestLoggedIn"
+        ) === "true"
+    );
+
+}
+
+
+/* =========================================================
+   GET TEAM NAME
+=========================================================
+
+   Your login/signup system should save the team name as:
+
+   localStorage.setItem(
+       "manifestTeamName",
+       teamName
+   );
+
+========================================================= */
+
+function getTeamName() {
+
+    return (
+        localStorage.getItem(
+            "manifestTeamName"
+        ) || "GUEST"
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE LOGIN / LOGOUT UI
+========================================================= */
+
+function updateLoginState() {
+
+    const loggedIn =
+        isUserLoggedIn();
+
+    const teamName =
+        getTeamName();
+
+
+    /* =====================================================
+       USER IS LOGGED IN
+    ====================================================== */
+
+    if (loggedIn) {
+
+
+        /* ================================================
+           NAVBAR
+
+           HIDE LOGIN + SIGN UP
+        ================================================= */
+
+        if (navbarAuth) {
+
+            navbarAuth.style.display =
+                "none";
+
+        }
+
+
+        /* ================================================
+           SHOW PROFILE IN NAVBAR
+        ================================================= */
+
+        if (navbarProfile) {
+
+            navbarProfile.classList.add(
+                "active"
+            );
+
+        }
+
+
+        /* ================================================
+           NAVBAR PROFILE NAME
+        ================================================= */
+
+        if (profileTeamName) {
+
+            profileTeamName.textContent =
+                teamName;
+
+        }
+
+
+        /* ================================================
+           SIDE MENU PROFILE
+        ================================================= */
+
+        if (sideProfileName) {
+
+            sideProfileName.textContent =
+                teamName;
+
+        }
+
+
+        /* ================================================
+           HIDE LOGIN + SIGN UP
+           FROM SIDE MENU
+        ================================================= */
+
+        if (menuAuthButtons) {
+
+            menuAuthButtons.style.display =
+                "none";
+
+        }
+
+
+        /* ================================================
+           SHOW TEAM NAME
+           WHERE LOGIN/SIGNUP WERE
+        ================================================= */
+
+        if (menuTeamContainer) {
+
+            menuTeamContainer.classList.add(
+                "active"
+            );
+
+        }
+
+
+        if (menuTeamName) {
+
+            menuTeamName.textContent =
+                teamName;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       USER IS LOGGED OUT
+    ====================================================== */
+
+    else {
+
+
+        /* ================================================
+           SHOW LOGIN + SIGN UP
+           IN NAVBAR
+        ================================================= */
+
+        if (navbarAuth) {
+
+            navbarAuth.style.display =
+                "flex";
+
+        }
+
+
+        /* ================================================
+           HIDE NAVBAR PROFILE
+        ================================================= */
+
+        if (navbarProfile) {
+
+            navbarProfile.classList.remove(
+                "active"
+            );
+
+        }
+
+
+        /* ================================================
+           SIDE MENU PROFILE = GUEST
+        ================================================= */
+
+        if (sideProfileName) {
+
+            sideProfileName.textContent =
+                "GUEST";
+
+        }
+
+
+        /* ================================================
+           SHOW LOGIN + SIGN UP
+           IN SIDE MENU
+        ================================================= */
+
+        if (menuAuthButtons) {
+
+            menuAuthButtons.style.display =
+                "flex";
+
+        }
+
+
+        /* ================================================
+           HIDE TEAM NAME
+        ================================================= */
+
+        if (menuTeamContainer) {
+
+            menuTeamContainer.classList.remove(
+                "active"
+            );
+
+        }
 
     }
 
@@ -39,67 +294,103 @@ function toggleMenu() {
 
 
 /* =========================================================
-   OPEN MENU
+   RUN LOGIN CHECK WHEN PAGE LOADS
+========================================================= */
+
+updateLoginState();
+
+
+/* =========================================================
+   OPEN SIDE MENU
 ========================================================= */
 
 function openMenu() {
 
-    menuToggle.classList.add("active");
-
-    sideMenu.classList.add("active");
-
-    menuOverlay.classList.add("active");
+    if (!sideMenu || !menuToggle) {
+        return;
+    }
 
 
-    /* Accessibility */
+    sideMenu.classList.add(
+        "active"
+    );
+
+
+    menuOverlay.classList.add(
+        "active"
+    );
+
+
+    menuToggle.classList.add(
+        "active"
+    );
+
 
     menuToggle.setAttribute(
         "aria-expanded",
         "true"
     );
+
 
     menuToggle.setAttribute(
         "aria-label",
         "Close Menu"
     );
 
+
     sideMenu.setAttribute(
         "aria-hidden",
         "false"
     );
 
 
-    /* Prevent background scrolling */
+    /*
+        Prevent background scrolling
+    */
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
 }
 
 
 /* =========================================================
-   CLOSE MENU
+   CLOSE SIDE MENU
 ========================================================= */
 
 function closeMenu() {
 
-    menuToggle.classList.remove("active");
-
-    sideMenu.classList.remove("active");
-
-    menuOverlay.classList.remove("active");
+    if (!sideMenu || !menuToggle) {
+        return;
+    }
 
 
-    /* Accessibility */
+    sideMenu.classList.remove(
+        "active"
+    );
+
+
+    menuOverlay.classList.remove(
+        "active"
+    );
+
+
+    menuToggle.classList.remove(
+        "active"
+    );
+
 
     menuToggle.setAttribute(
         "aria-expanded",
         "false"
     );
 
+
     menuToggle.setAttribute(
         "aria-label",
         "Open Menu"
     );
+
 
     sideMenu.setAttribute(
         "aria-hidden",
@@ -107,30 +398,48 @@ function closeMenu() {
     );
 
 
-    /* Restore scrolling */
+    /*
+        Restore scrolling
+    */
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+        "";
 
 }
 
 
 /* =========================================================
-   HAMBURGER CLICK
+   HAMBURGER TOGGLE
 ========================================================= */
 
 if (menuToggle) {
 
     menuToggle.addEventListener(
         "click",
-        toggleMenu
+        function () {
+
+            if (
+                sideMenu.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeMenu();
+
+            } else {
+
+                openMenu();
+
+            }
+
+        }
     );
 
 }
 
 
 /* =========================================================
-   OVERLAY CLICK
-   Clicking outside the menu closes it.
+   CLICK OVERLAY TO CLOSE MENU
 ========================================================= */
 
 if (menuOverlay) {
@@ -144,8 +453,7 @@ if (menuOverlay) {
 
 
 /* =========================================================
-   MENU LINKS
-   Close menu after clicking a navigation link.
+   CLOSE MENU WHEN NAVIGATION LINK IS CLICKED
 ========================================================= */
 
 const menuLinks =
@@ -154,23 +462,20 @@ const menuLinks =
     );
 
 
-menuLinks.forEach(function (link) {
+menuLinks.forEach(
+    function (link) {
 
-    link.addEventListener(
-        "click",
-        function () {
+        link.addEventListener(
+            "click",
+            closeMenu
+        );
 
-            closeMenu();
-
-        }
-    );
-
-});
+    }
+);
 
 
 /* =========================================================
-   ESC KEY
-   Pressing ESC closes the menu.
+   ESCAPE KEY CLOSES MENU
 ========================================================= */
 
 document.addEventListener(
@@ -179,7 +484,9 @@ document.addEventListener(
 
         if (
             event.key === "Escape" &&
-            sideMenu.classList.contains("active")
+            sideMenu.classList.contains(
+                "active"
+            )
         ) {
 
             closeMenu();
@@ -194,24 +501,17 @@ document.addEventListener(
    PROFILE DROPDOWN
 ========================================================= */
 
-const profileButton =
-    document.getElementById(
-        "profileButton"
-    );
-
-const profileDropdown =
-    document.getElementById(
-        "profileDropdown"
-    );
-
-
-if (profileButton && profileDropdown) {
+if (
+    profileButton &&
+    profileDropdown
+) {
 
     profileButton.addEventListener(
         "click",
         function (event) {
 
             event.stopPropagation();
+
 
             profileDropdown.classList.toggle(
                 "active"
@@ -224,7 +524,7 @@ if (profileButton && profileDropdown) {
 
 
 /* =========================================================
-   CLOSE PROFILE WHEN CLICKING OUTSIDE
+   CLOSE PROFILE DROPDOWN
 ========================================================= */
 
 document.addEventListener(
@@ -233,9 +533,13 @@ document.addEventListener(
 
         if (
             profileDropdown &&
-            !profileDropdown.contains(event.target) &&
             profileButton &&
-            !profileButton.contains(event.target)
+            !profileDropdown.contains(
+                event.target
+            ) &&
+            !profileButton.contains(
+                event.target
+            )
         ) {
 
             profileDropdown.classList.remove(
@@ -252,67 +556,54 @@ document.addEventListener(
    LOGOUT
 ========================================================= */
 
-const logoutButton =
-    document.getElementById(
-        "logoutButton"
-    );
-
-
 if (logoutButton) {
 
     logoutButton.addEventListener(
         "click",
         function () {
 
-            /*
-                If you later use localStorage
-                for authentication, clear it here.
 
-                Example:
+            /* =============================================
+               REMOVE LOGIN STATE
+            ============================================== */
 
-                localStorage.removeItem("manifestUser");
-            */
+            localStorage.removeItem(
+                "manifestLoggedIn"
+            );
 
-            window.location.href =
-                "index.html";
+
+            /* =============================================
+               REMOVE TEAM NAME
+            ============================================== */
+
+            localStorage.removeItem(
+                "manifestTeamName"
+            );
+
+
+            /* =============================================
+               CLOSE PROFILE
+            ============================================== */
+
+            profileDropdown.classList.remove(
+                "active"
+            );
+
+
+            /* =============================================
+               UPDATE NAVIGATION
+            ============================================== */
+
+            updateLoginState();
+
+
+            /* =============================================
+               CLOSE SIDE MENU
+            ============================================== */
+
+            closeMenu();
 
         }
     );
 
 }
-
-
-/* =========================================================
-   OPTIONAL PROFILE STATE
-=========================================================
-
-   You can later connect this to your actual
-   login system.
-
-   For now the normal LOGIN/SIGN UP buttons
-   remain visible.
-========================================================= */
-
-
-/*
-const loggedInUser =
-    localStorage.getItem("manifestUser");
-
-if (loggedInUser) {
-
-    const navbarAuth =
-        document.getElementById("navbarAuth");
-
-    const navbarProfile =
-        document.getElementById("navbarProfile");
-
-    if (navbarAuth) {
-        navbarAuth.style.display = "none";
-    }
-
-    if (navbarProfile) {
-        navbarProfile.classList.add("active");
-    }
-
-}
-*/
