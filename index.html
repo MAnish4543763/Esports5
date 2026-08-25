@@ -9,17 +9,21 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="Manifest Esports - Tournament management and esports operations.">
+    <meta
+        name="description"
+        content="Manifest Esports - Tournament management and esports operations."
+    >
 
     <title>Manifest Esports</title>
 
 
     <!-- =========================================================
-         CSS
+         MAIN CSS
     ========================================================== -->
 
     <link rel="stylesheet" href="css/styles.css">
@@ -32,24 +36,28 @@
 
     <!-- =========================================================
          MODULE 1
-         NAVIGATION BAR
+         MAIN NAVIGATION BAR
     ========================================================== -->
 
-    <header class="main-navbar" id="mainNavbar">
+    <header class="main-navbar">
 
 
         <!-- =====================================================
-             LEFT SIDE
-             LOGO
-             
-             On mobile:
-             Width = 20% of navbar
-             Height = 100% of navbar
+             LEFT SECTION — LOGO
+
+             This section is completely independent from the
+             buttons on the right.
+
+             Mobile:
+             20% of navbar width
+
+             Desktop:
+             20% of navbar width
         ====================================================== -->
 
-        <div class="navbar-logo">
+        <div class="navbar-logo-section">
 
-            <div class="logo-mark">
+            <div class="navbar-logo">
 
                 <img
                     src="mainlogo.png"
@@ -63,18 +71,28 @@
 
 
         <!-- =====================================================
-             RIGHT SIDE
-             LOGIN + SIGN UP + HAMBURGER
+             RIGHT SECTION
+
+             Contains:
+
+             - Login
+             - Sign Up
+             OR
+             - Profile
+             - Hamburger
         ====================================================== -->
 
-        <div class="navbar-right">
+        <div class="navbar-right-section">
 
 
             <!-- =================================================
-                 LOGIN / SIGN UP
+                 LOGGED OUT AUTH BUTTONS
             ================================================== -->
 
-            <div class="navbar-auth" id="navbarAuth">
+            <div
+                class="navbar-auth"
+                id="navbarAuth"
+            >
 
                 <a
                     href="login.html"
@@ -96,10 +114,10 @@
 
 
             <!-- =================================================
-                 PROFILE
-                 
-                 Hidden by default.
-                 Can be activated later through JavaScript.
+                 LOGGED IN PROFILE
+
+                 Hidden before login.
+                 Appears after login.
             ================================================== -->
 
             <div
@@ -110,6 +128,7 @@
                 <button
                     class="profile-button"
                     id="profileButton"
+                    type="button"
                     aria-label="Open Profile"
                 >
 
@@ -138,17 +157,20 @@
                 >
 
                     <div class="profile-dropdown-label">
-                        ACCOUNT
+                        TEAM
                     </div>
+
 
                     <div
                         class="profile-dropdown-name"
-                        id="profileName"
+                        id="profileTeamName"
                     >
-                        PROFILE
+                        GUEST
                     </div>
 
+
                     <div class="profile-dropdown-line"></div>
+
 
                     <a
                         href="profile.html"
@@ -157,6 +179,7 @@
                         VIEW PROFILE
                     </a>
 
+
                     <a
                         href="settings.html"
                         class="profile-dropdown-link"
@@ -164,9 +187,11 @@
                         ACCOUNT SETTINGS
                     </a>
 
+
                     <button
                         class="profile-logout"
                         id="logoutButton"
+                        type="button"
                     >
                         LOG OUT
                     </button>
@@ -178,17 +203,15 @@
 
 
             <!-- =================================================
-                 HAMBURGER MENU
-                 
-                 THIS IS THE ONLY HAMBURGER BUTTON.
+                 ONE AND ONLY HAMBURGER
             ================================================== -->
 
             <button
                 class="menu-toggle"
                 id="menuToggle"
+                type="button"
                 aria-label="Open Menu"
                 aria-expanded="false"
-                type="button"
             >
 
                 <span></span>
@@ -205,7 +228,7 @@
 
     <!-- =========================================================
          MODULE 2
-         MENU OVERLAY
+         DARK OVERLAY
     ========================================================== -->
 
     <div
@@ -229,7 +252,9 @@
         <div class="side-menu-content">
 
 
-            <!-- MENU TITLE -->
+            <!-- =================================================
+                 MENU TITLE
+            ================================================== -->
 
             <div class="menu-heading">
                 MENU
@@ -239,68 +264,52 @@
 
 
 
-            <!-- AUTHENTICATION AREA -->
+            <!-- =================================================
+                 PROFILE
 
-            <div
-                class="menu-auth-container"
-                id="menuAuthContainer"
-            >
+                 IMPORTANT:
+                 PROFILE IS ABOVE LOGIN/SIGN UP
+            ================================================== -->
 
-                <div class="menu-auth-buttons">
+            <div class="side-profile">
 
-                    <a
-                        href="login.html"
-                        class="menu-login-button"
-                    >
-                        LOGIN
-                    </a>
+                <a
+                    href="profile.html"
+                    class="side-profile-button"
+                    aria-label="Open Profile"
+                >
 
-                    <a
-                        href="signup.html"
-                        class="menu-signup-button"
-                    >
-                        SIGN UP
-                    </a>
+                    <div class="side-profile-icon">
 
-                </div>
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
 
-            </div>
+                            <path
+                                d="M12 12a4 4 0 1 0 0-8
+                                   4 4 0 0 0 0 8ZM4 21
+                                   c0-4.42 3.58-8 8-8s8
+                                   3.58 8 8H4Z"
+                            />
 
+                        </svg>
 
+                    </div>
 
-            <!-- PROFILE AREA -->
-
-            <div
-                class="menu-profile"
-                id="menuProfile"
-            >
-
-                <div class="menu-profile-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M12 12a4 4 0 1 0 0-8
-                               4 4 0 0 0 0 8ZM4 21
-                               c0-4.42 3.58-8 8-8s8
-                               3.58 8 8H4Z"
-                        />
-
-                    </svg>
-
-                </div>
+                </a>
 
 
-                <div class="menu-profile-info">
+                <div class="side-profile-info">
 
-                    <div class="menu-profile-label">
+                    <div class="side-profile-label">
                         PROFILE
                     </div>
 
-                    <div class="menu-profile-name">
+                    <div
+                        class="side-profile-name"
+                        id="sideProfileName"
+                    >
                         GUEST
                     </div>
 
@@ -311,7 +320,78 @@
 
 
             <!-- =================================================
-                 NAVIGATION LINKS
+                 LOGGED OUT:
+
+                 LOGIN + SIGN UP
+
+                 LOGGED IN:
+
+                 TEAM NAME
+            ================================================== -->
+
+            <div
+                class="menu-auth-container"
+                id="menuAuthContainer"
+            >
+
+                <!-- =============================================
+                     LOGGED OUT BUTTONS
+                ============================================== -->
+
+                <div
+                    class="menu-auth-buttons"
+                    id="menuAuthButtons"
+                >
+
+                    <a
+                        href="login.html"
+                        class="menu-login-button"
+                    >
+                        LOGIN
+                    </a>
+
+
+                    <a
+                        href="signup.html"
+                        class="menu-signup-button"
+                    >
+                        SIGN UP
+                    </a>
+
+                </div>
+
+
+                <!-- =============================================
+                     LOGGED IN TEAM
+
+                     Hidden until user logs in.
+                ============================================== -->
+
+                <div
+                    class="menu-team-container"
+                    id="menuTeamContainer"
+                >
+
+                    <div class="menu-team-label">
+                        TEAM
+                    </div>
+
+
+                    <div
+                        class="menu-team-name"
+                        id="menuTeamName"
+                    >
+                        TEAM NAME
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 NAVIGATION
             ================================================== -->
 
             <nav class="menu-navigation">
@@ -353,103 +433,53 @@
 
 
     <!-- =========================================================
-         MODULE 4
          MAIN WEBSITE CONTENT
-         
-         Keep your existing sections here.
+
+         Replace these sections with your actual modules later.
     ========================================================== -->
 
     <main>
 
-
-        <!-- HOME -->
-
         <section
             id="home"
             class="placeholder-section"
-        >
+        ></section>
 
-            <!-- Your Home content goes here -->
-
-        </section>
-
-
-
-        <!-- TOURNAMENTS -->
 
         <section
             id="tournaments"
             class="placeholder-section"
-        >
+        ></section>
 
-            <!-- Your Tournaments content goes here -->
-
-        </section>
-
-
-
-        <!-- TEAMS -->
 
         <section
             id="teams"
             class="placeholder-section"
-        >
+        ></section>
 
-            <!-- Your Teams content goes here -->
-
-        </section>
-
-
-
-        <!-- LEADERBOARD -->
 
         <section
             id="leaderboard"
             class="placeholder-section"
-        >
+        ></section>
 
-            <!-- Your Leaderboard content goes here -->
-
-        </section>
-
-
-
-        <!-- ESPORTS CONNECT -->
 
         <section
             id="esports-connect"
             class="placeholder-section"
-        >
+        ></section>
 
-            <!-- Your Esports Connect content goes here -->
-
-        </section>
-
-
-
-        <!-- NEWS -->
 
         <section
             id="news"
             class="placeholder-section"
-        >
+        ></section>
 
-            <!-- Your News content goes here -->
-
-        </section>
-
-
-
-        <!-- ABOUT -->
 
         <section
             id="about"
             class="placeholder-section"
-        >
-
-            <!-- Your About content goes here -->
-
-        </section>
+        ></section>
 
     </main>
 
