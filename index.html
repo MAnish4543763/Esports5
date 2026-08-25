@@ -1,278 +1,466 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <!-- =========================================================
          DOCUMENT SETUP
     ========================================================== -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Manifest Esports - Tournament management and esports operations.">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Manifest Esports - Tournament management and esports operations.">
+
     <title>Manifest Esports</title>
 
+
     <!-- =========================================================
-         EXTERNAL CSS
+         CSS
     ========================================================== -->
+
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
+
 
 <body>
 
+
     <!-- =========================================================
-         MODULE 1 — NAVIGATION BAR
+         MODULE 1
+         NAVIGATION BAR
     ========================================================== -->
-    <header class="main-navbar">
+
+    <header class="main-navbar" id="mainNavbar">
+
+
+        <!-- =====================================================
+             LEFT SIDE
+             LOGO
+             
+             On mobile:
+             Width = 20% of navbar
+             Height = 100% of navbar
+        ====================================================== -->
 
         <div class="navbar-logo">
+
             <div class="logo-mark">
-                 <img src="mainlogo.png" alt="Manifest Esports">
+
+                <img
+                    src="mainlogo.png"
+                    alt="Manifest Esports"
+                >
+
             </div>
 
-            
+        </div>
+
+
+
+        <!-- =====================================================
+             RIGHT SIDE
+             LOGIN + SIGN UP + HAMBURGER
+        ====================================================== -->
 
         <div class="navbar-right">
 
-            <!-- LOGIN / SIGN UP -->
+
+            <!-- =================================================
+                 LOGIN / SIGN UP
+            ================================================== -->
+
             <div class="navbar-auth" id="navbarAuth">
-                <a href="login.html" class="navbar-login">LOGIN</a>
-                <a href="signup.html" class="navbar-signup">SIGN UP</a>
+
+                <a
+                    href="login.html"
+                    class="navbar-login"
+                >
+                    LOGIN
+                </a>
+
+
+                <a
+                    href="signup.html"
+                    class="navbar-signup"
+                >
+                    SIGN UP
+                </a>
+
             </div>
 
-            <!-- PROFILE -->
-            <div class="navbar-profile" id="navbarProfile">
-                <button class="profile-button" id="profileButton" aria-label="Open Profile">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21c0-4.42 3.58-8 8-8s8 3.58 8 8H4Z"/>
+
+
+            <!-- =================================================
+                 PROFILE
+                 
+                 Hidden by default.
+                 Can be activated later through JavaScript.
+            ================================================== -->
+
+            <div
+                class="navbar-profile"
+                id="navbarProfile"
+            >
+
+                <button
+                    class="profile-button"
+                    id="profileButton"
+                    aria-label="Open Profile"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M12 12a4 4 0 1 0 0-8
+                               4 4 0 0 0 0 8ZM4 21
+                               c0-4.42 3.58-8 8-8s8
+                               3.58 8 8H4Z"
+                        />
+
                     </svg>
+
                 </button>
 
-                <div class="profile-dropdown" id="profileDropdown">
-                    <div class="profile-dropdown-label">ACCOUNT</div>
-                    <div class="profile-dropdown-name" id="profileName">PROFILE</div>
+
+                <!-- PROFILE DROPDOWN -->
+
+                <div
+                    class="profile-dropdown"
+                    id="profileDropdown"
+                >
+
+                    <div class="profile-dropdown-label">
+                        ACCOUNT
+                    </div>
+
+                    <div
+                        class="profile-dropdown-name"
+                        id="profileName"
+                    >
+                        PROFILE
+                    </div>
+
                     <div class="profile-dropdown-line"></div>
-                    <a href="profile.html" class="profile-dropdown-link">VIEW PROFILE</a>
-                    <a href="settings.html" class="profile-dropdown-link">ACCOUNT SETTINGS</a>
-                    <button class="profile-logout" id="logoutButton">LOG OUT</button>
+
+                    <a
+                        href="profile.html"
+                        class="profile-dropdown-link"
+                    >
+                        VIEW PROFILE
+                    </a>
+
+                    <a
+                        href="settings.html"
+                        class="profile-dropdown-link"
+                    >
+                        ACCOUNT SETTINGS
+                    </a>
+
+                    <button
+                        class="profile-logout"
+                        id="logoutButton"
+                    >
+                        LOG OUT
+                    </button>
+
                 </div>
+
             </div>
 
-            <!-- HAMBURGER -->
-            <button class="menu-toggle" id="menuToggle" aria-label="Open Menu" aria-expanded="false">
+
+
+            <!-- =================================================
+                 HAMBURGER MENU
+                 
+                 THIS IS THE ONLY HAMBURGER BUTTON.
+            ================================================== -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open Menu"
+                aria-expanded="false"
+                type="button"
+            >
+
                 <span></span>
                 <span></span>
                 <span></span>
+
             </button>
 
         </div>
+
     </header>
 
-    <!-- =========================================================
-         MODULE 2 — SIDE MENU
-    ========================================================== -->
-    <div class="menu-overlay" id="menuOverlay"></div>
 
-    <aside class="side-menu" id="sideMenu">
+
+    <!-- =========================================================
+         MODULE 2
+         MENU OVERLAY
+    ========================================================== -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+
+    <!-- =========================================================
+         MODULE 3
+         SIDE MENU
+    ========================================================== -->
+
+    <aside
+        class="side-menu"
+        id="sideMenu"
+        aria-hidden="true"
+    >
+
         <div class="side-menu-content">
 
-            <div class="menu-heading">MENU</div>
+
+            <!-- MENU TITLE -->
+
+            <div class="menu-heading">
+                MENU
+            </div>
+
             <div class="menu-line"></div>
 
-            <div class="menu-auth-container" id="menuAuthContainer"></div>
+
+
+            <!-- AUTHENTICATION AREA -->
+
+            <div
+                class="menu-auth-container"
+                id="menuAuthContainer"
+            >
+
+                <div class="menu-auth-buttons">
+
+                    <a
+                        href="login.html"
+                        class="menu-login-button"
+                    >
+                        LOGIN
+                    </a>
+
+                    <a
+                        href="signup.html"
+                        class="menu-signup-button"
+                    >
+                        SIGN UP
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROFILE AREA -->
+
+            <div
+                class="menu-profile"
+                id="menuProfile"
+            >
+
+                <div class="menu-profile-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M12 12a4 4 0 1 0 0-8
+                               4 4 0 0 0 0 8ZM4 21
+                               c0-4.42 3.58-8 8-8s8
+                               3.58 8 8H4Z"
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="menu-profile-info">
+
+                    <div class="menu-profile-label">
+                        PROFILE
+                    </div>
+
+                    <div class="menu-profile-name">
+                        GUEST
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 NAVIGATION LINKS
+            ================================================== -->
 
             <nav class="menu-navigation">
-                <a href="#home">HOME</a>
-                <a href="#tournaments">TOURNAMENTS</a>
-                <a href="#teams">TEAMS</a>
-                <a href="#leaderboard">LEADERBOARD</a>
-                <a href="#esports-connect">ESPORTS CONNECT</a>
-                <a href="#news">NEWS</a>
-                <a href="#about">ABOUT US</a>
+
+                <a href="#home">
+                    HOME
+                </a>
+
+                <a href="#tournaments">
+                    TOURNAMENTS
+                </a>
+
+                <a href="#teams">
+                    TEAMS
+                </a>
+
+                <a href="#leaderboard">
+                    LEADERBOARD
+                </a>
+
+                <a href="#esports-connect">
+                    ESPORTS CONNECT
+                </a>
+
+                <a href="#news">
+                    NEWS
+                </a>
+
+                <a href="#about">
+                    ABOUT US
+                </a>
+
             </nav>
 
         </div>
+
     </aside>
 
-    <!-- =========================================================
-         MODULE 3 — HOME / HERO INTRO
-    ========================================================== -->
-    <section class="hero-section" id="home">
 
-        <div class="hero-content">
-
-            <div class="hero-tagline">
-                <span class="hero-tagline-line"></span>
-                <span class="hero-tagline-text">WE DON'T JUST MANAGE TOURNAMENTS.</span>
-            </div>
-
-            <h1 class="hero-heading">
-                <span class="hero-heading-solid">WE BUILD</span>
-                <span class="hero-heading-outline">LEGACIES.</span>
-            </h1>
-
-            <p class="hero-description">
-                Manifest Esports is an esports management and tournament operations
-                team focused on building competitive experiences that connect players,
-                teams, brands and communities.
-            </p>
-
-            <a href="#contact" class="hero-button">
-                <span>WORK WITH US</span>
-                <span class="hero-button-arrow">→</span>
-            </a>
-
-        </div>
-
-        <div class="hero-bottom-fade"></div>
-    </section>
 
     <!-- =========================================================
-         MODULE 4 — PAST TOURNAMENTS
+         MODULE 4
+         MAIN WEBSITE CONTENT
+         
+         Keep your existing sections here.
     ========================================================== -->
-    <section class="tournaments-section" id="tournaments">
 
-        <div class="tournament-dots" id="tournamentDots">
-            <span class="tournament-dot active"></span>
-            <span class="tournament-dot"></span>
-            <span class="tournament-dot"></span>
-            <span class="tournament-dot"></span>
-            <span class="tournament-dot"></span>
-            <span class="tournament-dot"></span>
-        </div>
+    <main>
 
-        <div class="tournaments-container">
 
-            <h2 class="tournaments-title">PAST TOURNAMENTS</h2>
+        <!-- HOME -->
 
-            <div class="tournament-slider-wrapper">
-                <div class="tournament-slider" id="tournamentSlider">
+        <section
+            id="home"
+            class="placeholder-section"
+        >
 
-                    <!-- TOURNAMENT CARD 1 -->
-                    <article class="tournament-card">
-                        <img src="images/tournament-1.jpg" alt="Rising Star Invitational 2026" class="tournament-poster">
-                        <h3 class="tournament-name">Rising Star Invitational 2026</h3>
-                        <p class="tournament-status">Invite</p>
-                        <p class="tournament-date-label">Dates</p>
-                        <p class="tournament-date">3rd July 2026 to 5th July 2026</p>
-                    </article>
+            <!-- Your Home content goes here -->
 
-                    <!-- TOURNAMENT CARD 2 -->
-                    <article class="tournament-card">
-                        <img src="images/tournament-2.jpg" alt="BMPS 2026" class="tournament-poster">
-                        <h3 class="tournament-name">BMPS 2026</h3>
-                        <p class="tournament-status">Invite Only</p>
-                        <p class="tournament-date-label">Dates</p>
-                        <p class="tournament-date">8th Jun 2026 to 21st Jun 2026</p>
-                    </article>
+        </section>
 
-                    <!-- TOURNAMENT CARD 3 -->
-                    <article class="tournament-card">
-                        <img src="images/tournament-3.jpg" alt="KIE CCT 2026" class="tournament-poster">
-                        <h3 class="tournament-name">KIE CCT 2026</h3>
-                        <p class="tournament-status">Open</p>
-                        <p class="tournament-date-label">Dates</p>
-                        <p class="tournament-date">13th April 2026 to 26th April 2026</p>
-                    </article>
 
-                    <!-- TOURNAMENT CARD 4 -->
-                    <article class="tournament-card">
-                        <img src="images/tournament-4.jpg" alt="UE IRS 2026" class="tournament-poster">
-                        <h3 class="tournament-name">UE IRS 2026</h3>
-                        <p class="tournament-status">Open</p>
-                        <p class="tournament-date-label">Dates</p>
-                        <p class="tournament-date">14th March 2026 to 21st March 2026</p>
-                    </article>
 
-                    <!-- TOURNAMENT CARD 5 -->
-                    <article class="tournament-card">
-                        <img src="images/tournament-5.jpg" alt="Tournament 5" class="tournament-poster">
-                        <h3 class="tournament-name">Tournament Name 2026</h3>
-                        <p class="tournament-status">Open</p>
-                        <p class="tournament-date-label">Dates</p>
-                        <p class="tournament-date">Tournament dates</p>
-                    </article>
+        <!-- TOURNAMENTS -->
 
-                    <!-- TOURNAMENT CARD 6 -->
-                    <article class="tournament-card">
-                        <img src="images/tournament-6.jpg" alt="Tournament 6" class="tournament-poster">
-                        <h3 class="tournament-name">Tournament Name 2026</h3>
-                        <p class="tournament-status">Open</p>
-                        <p class="tournament-date-label">Dates</p>
-                        <p class="tournament-date">Tournament dates</p>
-                    </article>
+        <section
+            id="tournaments"
+            class="placeholder-section"
+        >
 
-                </div>
+            <!-- Your Tournaments content goes here -->
 
-                <div class="tournament-controls">
-                    <button class="tournament-arrow" id="tournamentPrev" aria-label="Previous tournaments">‹</button>
-                    <button class="tournament-arrow" id="tournamentNext" aria-label="Next tournaments">›</button>
-                </div>
+        </section>
 
-            </div>
-        </div>
-    </section>
+
+
+        <!-- TEAMS -->
+
+        <section
+            id="teams"
+            class="placeholder-section"
+        >
+
+            <!-- Your Teams content goes here -->
+
+        </section>
+
+
+
+        <!-- LEADERBOARD -->
+
+        <section
+            id="leaderboard"
+            class="placeholder-section"
+        >
+
+            <!-- Your Leaderboard content goes here -->
+
+        </section>
+
+
+
+        <!-- ESPORTS CONNECT -->
+
+        <section
+            id="esports-connect"
+            class="placeholder-section"
+        >
+
+            <!-- Your Esports Connect content goes here -->
+
+        </section>
+
+
+
+        <!-- NEWS -->
+
+        <section
+            id="news"
+            class="placeholder-section"
+        >
+
+            <!-- Your News content goes here -->
+
+        </section>
+
+
+
+        <!-- ABOUT -->
+
+        <section
+            id="about"
+            class="placeholder-section"
+        >
+
+            <!-- Your About content goes here -->
+
+        </section>
+
+    </main>
+
+
 
     <!-- =========================================================
-         MODULE 5 — PLACEHOLDER SECTIONS
-         These can be replaced with future modules.
+         JAVASCRIPT
     ========================================================== -->
-    <section class="placeholder-section" id="teams">
-        <h2>TEAMS</h2>
-    </section>
 
-    <section class="placeholder-section" id="leaderboard">
-        <h2>LEADERBOARD</h2>
-    </section>
-
-    <section class="placeholder-section" id="esports-connect">
-        <h2>ESPORTS CONNECT</h2>
-    </section>
-
-    <section class="placeholder-section" id="news">
-        <h2>NEWS</h2>
-    </section>
-
-    <section class="placeholder-section" id="about">
-        <h2>ABOUT US</h2>
-    </section>
-
-    <!-- =========================================================
-         MODULE 6 — FOOTER
-    ========================================================== -->
-    <footer class="site-footer">
-
-        <div class="footer-top">
-
-            <div class="footer-logo">
-                KRAFTON
-                <span>INDIA ESPORTS</span>
-            </div>
-
-            <div class="footer-socials">
-                <a href="#" class="footer-social" aria-label="Instagram">◎</a>
-                <a href="#" class="footer-social" aria-label="YouTube">▶</a>
-                <a href="#" class="footer-social" aria-label="X">𝕏</a>
-            </div>
-
-        </div>
-
-        <div class="footer-links">
-            <a href="#about">ABOUT BGMI</a>
-            <a href="#support">SUPPORT</a>
-            <a href="#terms">TERMS OF SERVICE</a>
-            <a href="#privacy">PRIVACY POLICY</a>
-            <a href="#rulebook">RULEBOOK</a>
-            <a href="#vendor">VENDOR PORTAL</a>
-        </div>
-
-        <div class="footer-copyright">
-            ©2026 KRAFTON, Inc. and/or its affiliated companies. | All rights reserved.
-        </div>
-
-    </footer>
-
-    <!-- =========================================================
-         EXTERNAL JAVASCRIPT
-    ========================================================== -->
     <script src="js/script.js"></script>
 
 </body>
+
 </html>
