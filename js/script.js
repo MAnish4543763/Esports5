@@ -1,348 +1,318 @@
 /* =========================================================
-   MODULE 1 — NAVIGATION MENU JAVASCRIPT
+   MANIFEST ESPORTS
+   NAVIGATION JAVASCRIPT
+========================================================= */
+
+
+/* =========================================================
+   GET NAVIGATION ELEMENTS
 ========================================================= */
 
 const menuToggle = document.getElementById("menuToggle");
+
 const sideMenu = document.getElementById("sideMenu");
+
 const menuOverlay = document.getElementById("menuOverlay");
 
+
+/* =========================================================
+   OPEN / CLOSE MENU FUNCTION
+========================================================= */
+
+function toggleMenu() {
+
+    const isOpen =
+        sideMenu.classList.contains("active");
+
+
+    if (isOpen) {
+
+        closeMenu();
+
+    } else {
+
+        openMenu();
+
+    }
+
+}
+
+
+/* =========================================================
+   OPEN MENU
+========================================================= */
+
 function openMenu() {
-    if (!menuToggle) return;
 
     menuToggle.classList.add("active");
-    sideMenu?.classList.add("active");
-    menuOverlay?.classList.add("active");
-    menuToggle.setAttribute("aria-expanded", "true");
+
+    sideMenu.classList.add("active");
+
+    menuOverlay.classList.add("active");
+
+
+    /* Accessibility */
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        "Close Menu"
+    );
+
+    sideMenu.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    /* Prevent background scrolling */
+
     document.body.style.overflow = "hidden";
+
 }
+
+
+/* =========================================================
+   CLOSE MENU
+========================================================= */
 
 function closeMenu() {
-    if (!menuToggle) return;
 
     menuToggle.classList.remove("active");
-    sideMenu?.classList.remove("active");
-    menuOverlay?.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
+
+    sideMenu.classList.remove("active");
+
+    menuOverlay.classList.remove("active");
+
+
+    /* Accessibility */
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    menuToggle.setAttribute(
+        "aria-label",
+        "Open Menu"
+    );
+
+    sideMenu.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    /* Restore scrolling */
+
     document.body.style.overflow = "";
+
 }
-
-menuToggle?.addEventListener("click", () => {
-    if (sideMenu.classList.contains("active")) {
-        closeMenu();
-    } else {
-        openMenu();
-    }
-});
-
-menuOverlay?.addEventListener("click", closeMenu);
-
-document.querySelectorAll(".menu-navigation a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-});
 
 
 /* =========================================================
-   MODULE 2 — AUTHENTICATION / PROFILE
-   NOTE:
-   This is a FRONT-END demo only.
-   Real accounts require a backend/database.
+   HAMBURGER CLICK
 ========================================================= */
 
-const navbarAuth = document.getElementById("navbarAuth");
-const navbarProfile = document.getElementById("navbarProfile");
-const profileButton = document.getElementById("profileButton");
-const profileDropdown = document.getElementById("profileDropdown");
-const profileName = document.getElementById("profileName");
-const logoutButton = document.getElementById("logoutButton");
-const menuAuthContainer = document.getElementById("menuAuthContainer");
+if (menuToggle) {
 
-function updateAuthenticationUI() {
-    const isLoggedIn =
-        localStorage.getItem("manifestLoggedIn") === "true";
+    menuToggle.addEventListener(
+        "click",
+        toggleMenu
+    );
 
-    const username =
-        localStorage.getItem("manifestUsername") || "PROFILE";
+}
 
-    if (navbarAuth && navbarProfile) {
-        if (isLoggedIn) {
-            navbarAuth.style.display = "none";
-            navbarProfile.classList.add("active");
 
-            if (profileName) {
-                profileName.textContent = username;
-            }
-        } else {
-            navbarAuth.style.display = "flex";
-            navbarProfile.classList.remove("active");
+/* =========================================================
+   OVERLAY CLICK
+   Clicking outside the menu closes it.
+========================================================= */
+
+if (menuOverlay) {
+
+    menuOverlay.addEventListener(
+        "click",
+        closeMenu
+    );
+
+}
+
+
+/* =========================================================
+   MENU LINKS
+   Close menu after clicking a navigation link.
+========================================================= */
+
+const menuLinks =
+    document.querySelectorAll(
+        ".menu-navigation a"
+    );
+
+
+menuLinks.forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function () {
+
+            closeMenu();
+
         }
-    }
+    );
 
-    if (menuAuthContainer) {
-        if (isLoggedIn) {
-            menuAuthContainer.innerHTML = `
-                <a href="profile.html" class="menu-profile-link">
-                    <div class="menu-profile">
-                        <div class="menu-profile-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21c0-4.42 3.58-8 8-8s8 3.58 8 8H4Z"/>
-                            </svg>
-                        </div>
+});
 
-                        <div class="menu-profile-info">
-                            <span class="menu-profile-label">ACCOUNT</span>
-                            <span class="menu-profile-name">${escapeHTML(username)}</span>
-                        </div>
-                    </div>
-                </a>
-            `;
-        } else {
-            menuAuthContainer.innerHTML = `
-                <div class="menu-auth-buttons">
-                    <a href="login.html" class="menu-login-button">LOGIN</a>
-                    <a href="signup.html" class="menu-signup-button">SIGN UP</a>
-                </div>
-            `;
+
+/* =========================================================
+   ESC KEY
+   Pressing ESC closes the menu.
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape" &&
+            sideMenu.classList.contains("active")
+        ) {
+
+            closeMenu();
+
         }
+
     }
+);
+
+
+/* =========================================================
+   PROFILE DROPDOWN
+========================================================= */
+
+const profileButton =
+    document.getElementById(
+        "profileButton"
+    );
+
+const profileDropdown =
+    document.getElementById(
+        "profileDropdown"
+    );
+
+
+if (profileButton && profileDropdown) {
+
+    profileButton.addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+            profileDropdown.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
 }
 
-function escapeHTML(value) {
-    const div = document.createElement("div");
-    div.textContent = value;
-    return div.innerHTML;
+
+/* =========================================================
+   CLOSE PROFILE WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            profileDropdown &&
+            !profileDropdown.contains(event.target) &&
+            profileButton &&
+            !profileButton.contains(event.target)
+        ) {
+
+            profileDropdown.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+const logoutButton =
+    document.getElementById(
+        "logoutButton"
+    );
+
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        function () {
+
+            /*
+                If you later use localStorage
+                for authentication, clear it here.
+
+                Example:
+
+                localStorage.removeItem("manifestUser");
+            */
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
+
 }
 
-profileButton?.addEventListener("click", event => {
-    event.stopPropagation();
-    profileDropdown?.classList.toggle("active");
-});
-
-document.addEventListener("click", event => {
-    if (navbarProfile && !navbarProfile.contains(event.target)) {
-        profileDropdown?.classList.remove("active");
-    }
-});
-
-logoutButton?.addEventListener("click", () => {
-    localStorage.removeItem("manifestLoggedIn");
-    localStorage.removeItem("manifestUsername");
-    localStorage.removeItem("manifestEmail");
-
-    profileDropdown?.classList.remove("active");
-    updateAuthenticationUI();
-});
-
 
 /* =========================================================
-   MODULE 3 — SIGN UP PAGE
+   OPTIONAL PROFILE STATE
+=========================================================
+
+   You can later connect this to your actual
+   login system.
+
+   For now the normal LOGIN/SIGN UP buttons
+   remain visible.
 ========================================================= */
 
-const signupForm = document.getElementById("signupForm");
 
-signupForm?.addEventListener("submit", event => {
-    event.preventDefault();
+/*
+const loggedInUser =
+    localStorage.getItem("manifestUser");
 
-    const username = document.getElementById("signupUsername").value.trim();
-    const email = document.getElementById("signupEmail").value.trim();
-    const password = document.getElementById("signupPassword").value;
+if (loggedInUser) {
 
-    const message = document.getElementById("signupMessage");
+    const navbarAuth =
+        document.getElementById("navbarAuth");
 
-    if (!username || !email || !password) {
-        message.textContent = "Please fill in all fields.";
-        message.style.color = "#ff2020";
-        return;
+    const navbarProfile =
+        document.getElementById("navbarProfile");
+
+    if (navbarAuth) {
+        navbarAuth.style.display = "none";
     }
 
-    localStorage.setItem("manifestUsername", username);
-    localStorage.setItem("manifestEmail", email);
-    localStorage.setItem("manifestPassword", password);
-    localStorage.setItem("manifestLoggedIn", "true");
-
-    message.textContent = "Account created successfully.";
-    message.style.color = "#00e85a";
-
-    setTimeout(() => {
-        window.location.href = "index.html";
-    }, 700);
-});
-
-
-/* =========================================================
-   MODULE 4 — LOGIN PAGE
-========================================================= */
-
-const loginForm = document.getElementById("loginForm");
-
-loginForm?.addEventListener("submit", event => {
-    event.preventDefault();
-
-    const username = document.getElementById("loginUsername").value.trim();
-    const password = document.getElementById("loginPassword").value;
-
-    const savedUsername =
-        localStorage.getItem("manifestUsername");
-
-    const savedEmail =
-        localStorage.getItem("manifestEmail");
-
-    const savedPassword =
-        localStorage.getItem("manifestPassword");
-
-    const message =
-        document.getElementById("loginMessage");
-
-    if (
-        (username === savedUsername || username === savedEmail) &&
-        password === savedPassword
-    ) {
-        localStorage.setItem("manifestLoggedIn", "true");
-
-        message.textContent = "Login successful.";
-        message.style.color = "#00e85a";
-
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 500);
-    } else {
-        message.textContent =
-            "Incorrect username/email or password.";
-
-        message.style.color = "#ff2020";
+    if (navbarProfile) {
+        navbarProfile.classList.add("active");
     }
-});
 
-
-/* =========================================================
-   MODULE 5 — PROFILE PAGE
-========================================================= */
-
-const profilePageName =
-    document.getElementById("profilePageName");
-
-const profilePageEmail =
-    document.getElementById("profilePageEmail");
-
-if (profilePageName) {
-    profilePageName.textContent =
-        localStorage.getItem("manifestUsername") || "PROFILE";
 }
-
-if (profilePageEmail) {
-    profilePageEmail.textContent =
-        localStorage.getItem("manifestEmail") || "EMAIL NOT AVAILABLE";
-}
-
-document
-    .getElementById("profileLogoutPage")
-    ?.addEventListener("click", () => {
-
-        localStorage.removeItem("manifestLoggedIn");
-        localStorage.removeItem("manifestUsername");
-        localStorage.removeItem("manifestEmail");
-        localStorage.removeItem("manifestPassword");
-
-        window.location.href = "index.html";
-    });
-
-
-/* =========================================================
-   MODULE 6 — TOURNAMENT CAROUSEL
-========================================================= */
-
-const tournamentSlider =
-    document.getElementById("tournamentSlider");
-
-const tournamentPrev =
-    document.getElementById("tournamentPrev");
-
-const tournamentNext =
-    document.getElementById("tournamentNext");
-
-const tournamentDots =
-    document.querySelectorAll(".tournament-dot");
-
-function getTournamentScrollAmount() {
-    const card =
-        document.querySelector(".tournament-card");
-
-    return card ? card.offsetWidth + 22 : 310;
-}
-
-tournamentNext?.addEventListener("click", () => {
-    tournamentSlider?.scrollBy({
-        left: getTournamentScrollAmount(),
-        behavior: "smooth"
-    });
-});
-
-tournamentPrev?.addEventListener("click", () => {
-    tournamentSlider?.scrollBy({
-        left: -getTournamentScrollAmount(),
-        behavior: "smooth"
-    });
-});
-
-tournamentDots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-
-        const card =
-            document.querySelector(".tournament-card");
-
-        if (!card || !tournamentSlider) return;
-
-        const cardWidth = card.offsetWidth + 22;
-
-        tournamentSlider.scrollTo({
-            left: cardWidth * index,
-            behavior: "smooth"
-        });
-
-        tournamentDots.forEach(item =>
-            item.classList.remove("active")
-        );
-
-        dot.classList.add("active");
-    });
-});
-
-tournamentSlider?.addEventListener("scroll", () => {
-
-    const card =
-        document.querySelector(".tournament-card");
-
-    if (!card) return;
-
-    const cardWidth = card.offsetWidth + 22;
-
-    const currentIndex =
-        Math.round(
-            tournamentSlider.scrollLeft / cardWidth
-        );
-
-    tournamentDots.forEach((dot, index) => {
-        dot.classList.toggle(
-            "active",
-            index === currentIndex
-        );
-    });
-});
-
-
-/* =========================================================
-   MODULE 7 — ESCAPE KEY
-========================================================= */
-
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
-        closeMenu();
-        profileDropdown?.classList.remove("active");
-    }
-});
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-updateAuthenticationUI();
+*/
