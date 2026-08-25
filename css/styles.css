@@ -25,32 +25,27 @@ body {
    MODULE 1 — NAVIGATION BAR
 ========================================================= */
 
-/* ================================
-   NAVBAR LOGO
-   ================================ */
-
 /* =========================================================
-   NAVBAR
+   MAIN NAVBAR
    ========================================================= */
 
 .navbar {
     width: 100%;
     height: 70px;
+
     background: #050505;
 
+    position: relative;
+
     display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+    align-items: center;
 
     box-sizing: border-box;
-    position: relative;
-    z-index: 1000;
 }
 
 
 /* =========================================================
-   LEFT SIDE - LOGO
-   Takes exactly 20% of navbar width
+   LOGO - LEFT 20% OF NAVBAR
    ========================================================= */
 
 .navbar-logo {
@@ -61,7 +56,8 @@ body {
     align-items: center;
     justify-content: flex-start;
 
-    padding: 0 15px;
+    padding-left: 15px;
+
     box-sizing: border-box;
 }
 
@@ -71,13 +67,13 @@ body {
 
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 }
 
 .logo-mark img {
     width: 100%;
-    max-width: 170px;
     height: 100%;
+
+    max-width: 160px;
 
     object-fit: contain;
     object-position: left center;
@@ -87,21 +83,22 @@ body {
 
 
 /* =========================================================
-   RIGHT SIDE - LOGIN / SIGN UP / MENU
+   RIGHT SIDE CONTROLS
+   LOGIN + SIGN UP + MENU
    ========================================================= */
 
 .navbar-actions {
-    width: 80%;
-    height: 100%;
+    position: absolute;
+
+    right: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
 
     display: flex;
     align-items: center;
-    justify-content: flex-end;
 
     gap: 10px;
-    padding: 0 20px;
-
-    box-sizing: border-box;
 }
 
 
@@ -116,15 +113,26 @@ body {
     padding: 0 20px;
 
     background: transparent;
-    color: white;
 
     border: 1px solid #ffc400;
 
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
+
     letter-spacing: 1px;
 
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
 }
 
 
@@ -139,51 +147,62 @@ body {
     padding: 0 20px;
 
     background: #ffc400;
-    color: #050505;
 
     border: 1px solid #ffc400;
 
+    color: #050505;
+
+    font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: 700;
+
     letter-spacing: 1px;
 
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
 }
 
 
 /* =========================================================
-   THREE-LINE MENU BUTTON
+   THREE LINE MENU
    ========================================================= */
 
 .menu-btn {
     width: 45px;
     height: 45px;
 
-    margin-left: 10px;
+    margin-left: 8px;
+
+    padding: 0;
+
+    background: transparent;
+    border: none;
 
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
     gap: 7px;
 
-    background: transparent;
-    border: none;
-
     cursor: pointer;
 }
 
-
-/* The three red lines */
-
 .menu-btn span {
-    display: block;
-
     width: 34px;
     height: 2px;
 
     background: #ff1b23;
+
+    display: block;
 }
 
 
@@ -200,7 +219,6 @@ body {
     .navbar-logo {
         width: 20%;
         padding-left: 10px;
-        padding-right: 5px;
     }
 
     .logo-mark img {
@@ -208,29 +226,33 @@ body {
     }
 
     .navbar-actions {
-        width: 80%;
-        padding: 0 12px;
-        gap: 8px;
+        right: 12px;
+        gap: 7px;
     }
 
     .login-btn {
         min-width: 75px;
         height: 38px;
+
         padding: 0 12px;
+
         font-size: 12px;
     }
 
     .signup-btn {
         min-width: 85px;
         height: 38px;
+
         padding: 0 12px;
+
         font-size: 12px;
     }
 
     .menu-btn {
         width: 40px;
         height: 40px;
-        margin-left: 5px;
+
+        margin-left: 3px;
     }
 
     .menu-btn span {
@@ -240,7 +262,7 @@ body {
 
 
 /* =========================================================
-   MOBILE PHONE
+   MOBILE
    ========================================================= */
 
 @media (max-width: 480px) {
@@ -249,54 +271,54 @@ body {
         height: 60px;
     }
 
-    /* Logo still occupies 20% */
     .navbar-logo {
         width: 20%;
         padding-left: 7px;
-        padding-right: 3px;
     }
 
     .logo-mark img {
-        width: 100%;
-        height: 100%;
-        max-width: none;
+        max-width: 100%;
     }
 
     .navbar-actions {
-        width: 80%;
-        padding: 0 6px;
+        right: 6px;
         gap: 5px;
     }
 
     .login-btn {
         min-width: 62px;
         height: 34px;
+
         padding: 0 8px;
+
         font-size: 10px;
-        letter-spacing: 0.7px;
+        letter-spacing: 0.5px;
     }
 
     .signup-btn {
         min-width: 70px;
         height: 34px;
+
         padding: 0 8px;
+
         font-size: 10px;
-        letter-spacing: 0.7px;
+        letter-spacing: 0.5px;
     }
 
     .menu-btn {
-        width: 34px;
-        height: 38px;
-        margin-left: 2px;
+        width: 32px;
+        height: 36px;
+
+        margin-left: 1px;
+
         gap: 5px;
     }
 
     .menu-btn span {
-        width: 27px;
+        width: 26px;
         height: 2px;
     }
 }
-
 
 
 
