@@ -31,11 +31,6 @@ body {
     left: 0;
     width: 100%;
     height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 28px 0 8px;
-    background: #050505;
     z-index: 1000;
 }
 
@@ -53,10 +48,8 @@ body {
     justify-content: center;
     background: #ffd000;
     color: #050505;
-    font-size: 32px;
-    font-weight: 900;
-    transform: skew(-8deg);
-    margin-right: 9px;
+
+   
 }
 
 .logo-title {
