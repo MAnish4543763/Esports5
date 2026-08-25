@@ -1,2 +1,0 @@
-Replace this folder's placeholder with your actual images.
-Required filenames are listed in README.md.
