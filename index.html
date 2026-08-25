@@ -243,193 +243,159 @@
          SIDE MENU
     ========================================================== -->
 
-    <aside
-        class="side-menu"
-        id="sideMenu"
-        aria-hidden="true"
-    >
+   <!-- =========================================================
+     SIDE MENU
+========================================================= -->
 
-        <div class="side-menu-content">
+<aside class="side-menu" id="sideMenu">
 
+    <div class="side-menu-content">
 
-            <!-- =================================================
-                 MENU TITLE
-            ================================================== -->
+        <!-- =================================================
+             PROFILE
+        ================================================== -->
 
-            <div class="menu-heading">
-                MENU
-            </div>
+        <div class="side-profile">
 
-            <div class="menu-line"></div>
+            <a href="profile.html" class="side-profile-button">
 
+                <div class="side-profile-icon">
 
-
-            <!-- =================================================
-                 PROFILE
-
-                 IMPORTANT:
-                 PROFILE IS ABOVE LOGIN/SIGN UP
-            ================================================== -->
-
-            <div class="side-profile">
-
-                <a
-                    href="profile.html"
-                    class="side-profile-button"
-                    aria-label="Open Profile"
-                >
-
-                    <div class="side-profile-icon">
-
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
-
-                            <path
-                                d="M12 12a4 4 0 1 0 0-8
-                                   4 4 0 0 0 0 8ZM4 21
-                                   c0-4.42 3.58-8 8-8s8
-                                   3.58 8 8H4Z"
-                            />
-
-                        </svg>
-
-                    </div>
-
-                </a>
-
-
-                <div class="side-profile-info">
-
-                    <div class="side-profile-label">
-                        PROFILE
-                    </div>
-
-                    <div
-                        class="side-profile-name"
-                        id="sideProfileName"
-                    >
-                        GUEST
-                    </div>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 12a4 4 0 1 0 0-8
+                        4 4 0 0 0 0 8ZM4 21
+                        c0-4.42 3.58-8 8-8s8
+                        3.58 8 8H4Z"/>
+                    </svg>
 
                 </div>
 
-            </div>
+            </a>
 
+            <div class="side-profile-info">
 
-
-            <!-- =================================================
-                 LOGGED OUT:
-
-                 LOGIN + SIGN UP
-
-                 LOGGED IN:
-
-                 TEAM NAME
-            ================================================== -->
-
-            <div
-                class="menu-auth-container"
-                id="menuAuthContainer"
-            >
-
-                <!-- =============================================
-                     LOGGED OUT BUTTONS
-                ============================================== -->
+                <div class="side-profile-label">
+                    PROFILE
+                </div>
 
                 <div
-                    class="menu-auth-buttons"
-                    id="menuAuthButtons"
+                    class="side-profile-name"
+                    id="sideProfileName"
                 >
-
-                    <a
-                        href="login.html"
-                        class="menu-login-button"
-                    >
-                        LOGIN
-                    </a>
-
-
-                    <a
-                        href="signup.html"
-                        class="menu-signup-button"
-                    >
-                        SIGN UP
-                    </a>
-
-                </div>
-
-
-                <!-- =============================================
-                     LOGGED IN TEAM
-
-                     Hidden until user logs in.
-                ============================================== -->
-
-                <div
-                    class="menu-team-container"
-                    id="menuTeamContainer"
-                >
-
-                    <div class="menu-team-label">
-                        TEAM
-                    </div>
-
-
-                    <div
-                        class="menu-team-name"
-                        id="menuTeamName"
-                    >
-                        TEAM NAME
-                    </div>
-
+                    GUEST
                 </div>
 
             </div>
-
-
-
-            <!-- =================================================
-                 NAVIGATION
-            ================================================== -->
-
-            <nav class="menu-navigation">
-
-                <a href="#home">
-                    HOME
-                </a>
-
-                <a href="#tournaments">
-                    TOURNAMENTS
-                </a>
-
-                <a href="#teams">
-                    TEAMS
-                </a>
-
-                <a href="#leaderboard">
-                    LEADERBOARD
-                </a>
-
-                <a href="#esports-connect">
-                    ESPORTS CONNECT
-                </a>
-
-                <a href="#news">
-                    NEWS
-                </a>
-
-                <a href="#about">
-                    ABOUT US
-                </a>
-
-            </nav>
 
         </div>
 
-    </aside>
 
+        <!-- =================================================
+             LOGIN / SIGN UP
+        ================================================== -->
+
+        <div
+            class="menu-auth-container"
+            id="menuAuthContainer"
+        >
+
+            <!-- LOGGED OUT -->
+
+            <div
+                class="menu-auth-buttons"
+                id="menuAuthButtons"
+            >
+
+                <a
+                    href="login.html"
+                    class="menu-login-button"
+                >
+                    LOGIN
+                </a>
+
+                <a
+                    href="signup.html"
+                    class="menu-signup-button"
+                >
+                    SIGN UP
+                </a>
+
+            </div>
+
+
+            <!-- LOGGED IN -->
+
+            <div
+                class="menu-team-container"
+                id="menuTeamContainer"
+            >
+
+                <div class="menu-team-label">
+                    TEAM
+                </div>
+
+                <div
+                    class="menu-team-name"
+                    id="menuTeamName"
+                >
+                    TEAM NAME
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MENU HEADING
+        ================================================== -->
+
+        <div class="menu-heading">
+            MENU
+        </div>
+
+        <div class="menu-line"></div>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <nav class="menu-navigation">
+
+            <a href="#home">
+                HOME
+            </a>
+
+            <a href="#tournaments">
+                TOURNAMENTS
+            </a>
+
+            <a href="#teams">
+                TEAMS
+            </a>
+
+            <a href="#leaderboard">
+                LEADERBOARD
+            </a>
+
+            <a href="#esports-connect">
+                ESPORTS CONNECT
+            </a>
+
+            <a href="#news">
+                NEWS
+            </a>
+
+            <a href="#about">
+                ABOUT US
+            </a>
+
+        </nav>
+
+    </div>
+
+</aside>
 
 
     <!-- =========================================================
