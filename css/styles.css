@@ -25,45 +25,52 @@ body {
    MODULE 1 — NAVIGATION BAR
 ========================================================= */
 
-.main-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
+.navbar {
     width: 100%;
-    height: 76px;
+    height: 70px;
+    background: #050505;
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 28px 0 8px;
-    background: #050505;
-    z-index: 1000;
+
+    position: relative;
+    box-sizing: border-box;
 }
 
+
+/* ================================
+   LOGO
+================================ */
+
 .navbar-logo {
+    width: 20%;
+    height: 100%;
+
     display: flex;
     align-items: center;
-    height: 100%;
+
+    padding-left: 15px;
+    box-sizing: border-box;
 }
 
 .logo-mark {
-    width: 63px;
-    height: 58px;
+    width: 100%;
+    height: 100%;
+
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: #ffd000;
-    color: #050505;
-    font-size: 32px;
-    font-weight: 900;
-    transform: skew(-8deg);
-    margin-right: 9px;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1;
+.logo-mark img {
+    width: 100%;
+    height: 100%;
+
+    max-width: 170px;
+
+    object-fit: contain;
+    object-position: left center;
+
+    display: block;
 }
 
 .logo-title {
