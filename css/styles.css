@@ -301,54 +301,7 @@ body {
 
 
 
-.navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
 
-.navbar-auth {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-right: 15px;
-}
-
-.navbar-login,
-.navbar-signup {
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    transition: 0.3s ease;
-}
-
-.navbar-login {
-    border: 1px solid #ffc400;
-    background: transparent;
-    color: #ffffff;
-}
-
-.navbar-login:hover {
-    background: #ffc400;
-    color: #050505;
-}
-
-.navbar-signup {
-    border: 1px solid #ffc400;
-    background: #ffc400;
-    color: #050505;
-}
-
-.navbar-signup:hover {
-    background: #ffffff;
-    border-color: #ffffff;
-}
 
 /* =========================================================
    PROFILE
