@@ -25,32 +25,68 @@ body {
    MODULE 1 — NAVIGATION BAR
 ========================================================= */
 
-.main-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 76px;
-    z-index: 1000;
-}
+/* ================================
+   NAVBAR LOGO
+   ================================ */
 
 .navbar-logo {
     display: flex;
     align-items: center;
-    height: 100%;
+    justify-content: flex-start;
+    height: 70px;
+    padding-left: 20px;
 }
 
 .logo-mark {
-    width: 63px;
-    height: 58px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffd000;
-    color: #050505;
-
-   
 }
+
+.logo-mark img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ================================
+   MOBILE RESPONSIVE
+   ================================ */
+
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 60px;
+        padding-left: 12px;
+    }
+
+    .logo-mark img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+/* ================================
+   SMALL PHONES
+   ================================ */
+
+@media (max-width: 480px) {
+    .navbar-logo {
+        height: 55px;
+        padding-left: 10px;
+    }
+
+    .logo-mark img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+
 
 .logo-title {
     color: #ff2020;
