@@ -20,21 +20,36 @@
     <!-- =========================================================
          MODULE 1 — NAVIGATION BAR
     ========================================================== -->
-    <header class="main-navbar">
+    <nav class="navbar">
 
-        <div class="navbar-logo">
-            <div class="logo-mark">
-                <img src="mainlogo.png" alt="Company Logo">
-            </div>
+    <!-- ================= LOGO ================= -->
+    <div class="navbar-logo">
+        <div class="logo-mark">
+            <img src="mainlogo.png" alt="Company Logo">
+        </div>
+    </div>
 
-        <div class="navbar-right">
 
-            <!-- LOGIN / SIGN UP -->
-            <div class="navbar-auth" id="navbarAuth">
-                <a href="login.html" class="navbar-login">LOGIN</a>
-                <a href="signup.html" class="navbar-signup">SIGN UP</a>
-            </div>
+    <!-- ============== RIGHT SIDE =============== -->
+    <div class="navbar-actions">
 
+        <button class="login-btn">
+            LOGIN
+        </button>
+
+        <button class="signup-btn">
+            SIGN UP
+        </button>
+
+        <button class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+</nav>
             <!-- PROFILE -->
             <div class="navbar-profile" id="navbarProfile">
                 <button class="profile-button" id="profileButton" aria-label="Open Profile">
