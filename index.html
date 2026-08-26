@@ -1,211 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <!-- =========================================================
-         DOCUMENT SETUP
-    ========================================================== -->
-
+    <!-- ================================================   DOCUMENT SETUP ======================================================= -->
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+        content="width=device-width, initial-scale=1.0">
     <meta
         name="description"
-        content="Manifest Esports - Tournament management and esports operations."
-    >
-
+        content="Manifest Esports - Tournament management and esports operations.">
     <title>Manifest Esports</title>
-
-
-    <!-- =========================================================
-         MAIN CSS
-    ========================================================== -->
-
+    <!-- ========================================================= MAIN CSS ========================================================== -->
     <link rel="stylesheet" href="css/styles.css">
-
 </head>
-
-
 <body>
-
-
-    <!-- =========================================================
-         MODULE 1
-         MAIN NAVIGATION BAR
-    ========================================================== -->
-
+    <!-- ======================================= MODULE 1 -  MAIN NAVIGATION BAR ============================================ -->
     <header class="main-navbar">
-
-
         <!-- =====================================================
              LEFT SECTION — LOGO
-
              This section is completely independent from the
              buttons on the right.
-
              Mobile:
              20% of navbar width
-
              Desktop:
              20% of navbar width
         ====================================================== -->
-
         <div class="navbar-logo-section">
-
             <div class="navbar-logo">
-
-                <img
-                    src="mainlogo.png"
-                    alt="Manifest Esports"
-                >
-
+                <img src="mainlogo.png" alt="Manifest Esports">
             </div>
-
         </div>
-
-
-
         <!-- =====================================================
              RIGHT SECTION
-
              Contains:
-
              - Login
              - Sign Up
              OR
              - Profile
              - Hamburger
         ====================================================== -->
-
         <div class="navbar-right-section">
-
-
             <!-- =================================================
                  LOGGED OUT AUTH BUTTONS
             ================================================== -->
-
             <div
                 class="navbar-auth"
-                id="navbarAuth"
-            >
-
-                <a
-                    href="login.html"
-                    class="navbar-login"
-                >
+                id="navbarAuth">
+                <a href="login.html" class="navbar-login">
                     LOGIN
                 </a>
-
-
-                <a
-                    href="signup.html"
-                    class="navbar-signup"
-                >
+                <a href="signup.html" class="navbar-signup" >
                     SIGN UP
                 </a>
-
             </div>
-
-
-
             <!-- =================================================
                  LOGGED IN PROFILE
-
                  Hidden before login.
                  Appears after login.
             ================================================== -->
-
-            <div
-                class="navbar-profile"
-                id="navbarProfile"
-            >
-
-                <button
-                    class="profile-button"
+            <div  class="navbar-profile"  id="navbarProfile" >
+               <button class="profile-button"
                     id="profileButton"
                     type="button"
                     aria-label="Open Profile"
                 >
-
                     <svg
                         viewBox="0 0 24 24"
                         aria-hidden="true"
                     >
-
                         <path
                             d="M12 12a4 4 0 1 0 0-8
                                4 4 0 0 0 0 8ZM4 21
                                c0-4.42 3.58-8 8-8s8
                                3.58 8 8H4Z"
                         />
-
                     </svg>
-
                 </button>
-
-
                 <!-- PROFILE DROPDOWN -->
-
                 <div
                     class="profile-dropdown"
                     id="profileDropdown"
                 >
-
                     <div class="profile-dropdown-label">
                         TEAM
                     </div>
-
-
                     <div
                         class="profile-dropdown-name"
                         id="profileTeamName"
                     >
                         GUEST
                     </div>
-
-
                     <div class="profile-dropdown-line"></div>
-
-
                     <a
                         href="profile.html"
                         class="profile-dropdown-link"
                     >
                         VIEW PROFILE
                     </a>
-
-
-                    <a
-                        href="settings.html"
-                        class="profile-dropdown-link"
-                    >
-                        ACCOUNT SETTINGS
-                    </a>
-
-
+                    <a href="settings.html" class="profile-dropdown-link">
+                     ACCOUNT SETTINGS
+                    </a>   
                     <button
                         class="profile-logout"
                         id="logoutButton"
                         type="button"
                     >
                         LOG OUT
-                    </button>
-
+                    </button>     
                 </div>
-
             </div>
-
-
-
             <!-- =================================================
                  ONE AND ONLY HAMBURGER
             ================================================== -->
-
             <button
                 class="menu-toggle"
                 id="menuToggle"
@@ -213,156 +119,95 @@
                 aria-label="Open Menu"
                 aria-expanded="false"
             >
-
                 <span></span>
                 <span></span>
                 <span></span>
-
             </button>
-
         </div>
-
     </header>
-
-
-
     <!-- =========================================================
          MODULE 2
          DARK OVERLAY
     ========================================================== -->
-
     <div
         class="menu-overlay"
         id="menuOverlay"
     ></div>
-
-
-
     <!-- =========================================================
          MODULE 3
          SIDE MENU
     ========================================================== -->
-
    <!-- =========================================================
      SIDE MENU
 ========================================================= -->
-
 <aside class="side-menu" id="sideMenu">
-
     <div class="side-menu-content">
-
         <!-- =================================================
              PROFILE
         ================================================== -->
-
         <div class="side-profile">
-
             <a href="profile.html" class="side-profile-button">
-
                 <div class="side-profile-icon">
-
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M12 12a4 4 0 1 0 0-8
                         4 4 0 0 0 0 8ZM4 21
                         c0-4.42 3.58-8 8-8s8
                         3.58 8 8H4Z"/>
                     </svg>
-
                 </div>
-
             </a>
-
             <div class="side-profile-info">
-
                 <div class="side-profile-label">
                     PROFILE
                 </div>
-
                 <div
                     class="side-profile-name"
                     id="sideProfileName"
                 >
                     GUEST
                 </div>
-
             </div>
-
         </div>
-
-
         <!-- =================================================
              LOGIN / SIGN UP
         ================================================== -->
-
         <div
             class="menu-auth-container"
             id="menuAuthContainer"
         >
-
             <!-- LOGGED OUT -->
-
             <div
                 class="menu-auth-buttons"
                 id="menuAuthButtons"
             >
-
-                <a
-                    href="login.html"
-                    class="menu-login-button"
-                >
+                <a href="login.html" class="menu-login-button">
                     LOGIN
                 </a>
-
-                <a
-                    href="signup.html"
-                    class="menu-signup-button"
-                >
+                <a href="signup.html"  class="menu-signup-button" >
                     SIGN UP
                 </a>
-
             </div>
-
-
             <!-- LOGGED IN -->
-
-            <div
-                class="menu-team-container"
-                id="menuTeamContainer"
-            >
-
+            <div class="menu-team-container" id="menuTeamContainer" >    
                 <div class="menu-team-label">
                     TEAM
                 </div>
-
-                <div
-                    class="menu-team-name"
-                    id="menuTeamName"
-                >
-                    TEAM NAME
-                </div>
-
+                <div class="menu-team-name" id="menuTeamName" >
+                 TEAM NAME
+                </div>   
             </div>
-
         </div>
-
-
         <!-- =================================================
              MENU HEADING
         ================================================== -->
-
         <div class="menu-heading">
             MENU
         </div>
-
         <div class="menu-line"></div>
-
-
         <!-- =================================================
              NAVIGATION
         ================================================== -->
-
         <nav class="menu-navigation">
-
             <a href="#home">
                 HOME
             </a>
