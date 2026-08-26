@@ -8,11 +8,15 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
 
 body {
     width: 100%;
@@ -23,6 +27,7 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
 
+    /* Prevent horizontal scrolling */
     overflow-x: hidden;
 }
 
@@ -33,50 +38,40 @@ body {
 ========================================================= */
 
 .main-navbar {
-
     width: 100%;
-
     height: 100px;
 
     background: #050505;
 
     display: flex;
-
     align-items: stretch;
 
     position: relative;
-
     z-index: 1000;
 
     border-bottom: 1px solid #151515;
+
+    /* Prevent children from forcing navbar wider */
+    min-width: 0;
 }
 
 
 /* =========================================================
    LEFT LOGO SECTION
 
-   THIS IS THE IMPORTANT CHANGE.
-
-   The logo has its OWN 20% section.
-
-   It is not sharing space with LOGIN/SIGN UP.
-
-   20% width
-   100% height
+   Responsive logo area
 ========================================================= */
 
 .navbar-logo-section {
-
     width: 20%;
-
     height: 100%;
 
-    flex: 0 0 20%;
+    flex: 0 1 20%;
+
+    min-width: 0;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     overflow: hidden;
@@ -90,15 +85,11 @@ body {
 ========================================================= */
 
 .navbar-logo {
-
     width: 100%;
-
     height: 100%;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     overflow: hidden;
@@ -108,56 +99,48 @@ body {
 /* =========================================================
    LOGO IMAGE
 
-   The image stays proportional.
-
-   It is enlarged slightly so it is more visible on
-   mobile screens.
-
+   Keeps logo inside its section
 ========================================================= */
 
 .navbar-logo img {
+    width: 100%;
+    height: 100%;
 
-    width: 115%;
-
-    height: 115%;
-
-    max-width: none;
+    max-width: 100%;
+    max-height: 100%;
 
     display: block;
 
     object-fit: contain;
-
     object-position: center;
 
-    transform: scale(1.05);
+    transform: none;
 }
 
 
 /* =========================================================
    RIGHT NAVIGATION SECTION
-
-   Remaining 80%
 ========================================================= */
 
 .navbar-right-section {
-
     width: 80%;
-
     height: 100%;
 
-    flex: 1;
+    flex: 1 1 auto;
 
     min-width: 0;
 
     display: flex;
-
     align-items: center;
-
     justify-content: flex-end;
 
-    gap: 10px;
+    gap: clamp(6px, 1vw, 12px);
 
-    padding-right: 12px;
+    padding-left: 8px;
+    padding-right: clamp(8px, 1.5vw, 16px);
+
+    /* Prevent overflow */
+    overflow: hidden;
 }
 
 
@@ -166,37 +149,45 @@ body {
 ========================================================= */
 
 .navbar-auth {
-
     display: flex;
-
     align-items: center;
+    justify-content: flex-end;
 
-    gap: 10px;
+    gap: clamp(5px, 0.8vw, 10px);
+
+    min-width: 0;
+
+    flex-shrink: 1;
 }
 
 
+/* =========================================================
+   LOGIN / SIGN UP BUTTON BASE
+========================================================= */
+
 .navbar-login,
 .navbar-signup {
+    height: clamp(40px, 5vw, 48px);
 
-    height: 48px;
+    min-width: 0;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    padding: 0 20px;
+    padding: 0 clamp(10px, 1.5vw, 20px);
 
     text-decoration: none;
 
-    font-size: 13px;
+    font-size: clamp(10px, 1vw, 13px);
 
     font-weight: 900;
 
-    letter-spacing: 1px;
+    letter-spacing: clamp(0.5px, 0.1vw, 1px);
 
     white-space: nowrap;
+
+    flex-shrink: 1;
 
     transition: 0.25s ease;
 }
@@ -207,7 +198,6 @@ body {
 ========================================================= */
 
 .navbar-login {
-
     background: transparent;
 
     border: 2px solid #ffc400;
@@ -215,11 +205,8 @@ body {
     color: #ffffff;
 }
 
-
 .navbar-login:hover {
-
     background: #ffc400;
-
     color: #050505;
 }
 
@@ -229,7 +216,6 @@ body {
 ========================================================= */
 
 .navbar-signup {
-
     background: #ffc400;
 
     border: 2px solid #ffc400;
@@ -237,11 +223,8 @@ body {
     color: #050505;
 }
 
-
 .navbar-signup:hover {
-
     background: #ffffff;
-
     border-color: #ffffff;
 }
 
@@ -253,18 +236,17 @@ body {
 ========================================================= */
 
 .navbar-profile {
-
     position: relative;
 
-    width: 70px;
-
+    width: clamp(50px, 6vw, 70px);
     height: 55px;
 
     display: none;
 
     align-items: center;
-
     justify-content: center;
+
+    flex-shrink: 0;
 }
 
 
@@ -273,7 +255,6 @@ body {
 ========================================================= */
 
 .navbar-profile.active {
-
     display: flex;
 }
 
@@ -283,44 +264,35 @@ body {
 ========================================================= */
 
 .profile-button {
-
-    width: 48px;
-
-    height: 48px;
+    width: clamp(40px, 4vw, 48px);
+    height: clamp(40px, 4vw, 48px);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     background: #111111;
 
     border: 2px solid #ffc400;
-
     border-radius: 50%;
 
     color: #ffc400;
 
     cursor: pointer;
 
+    flex-shrink: 0;
+
     transition: 0.25s ease;
 }
 
-
 .profile-button:hover {
-
     background: #ffc400;
-
     color: #050505;
 }
 
-
 .profile-button svg {
-
-    width: 25px;
-
-    height: 25px;
+    width: clamp(20px, 2.2vw, 25px);
+    height: clamp(20px, 2.2vw, 25px);
 
     fill: currentColor;
 }
@@ -331,25 +303,23 @@ body {
 ========================================================= */
 
 .profile-dropdown {
-
     position: absolute;
 
     top: 62px;
-
     right: 0;
 
-    width: 230px;
+    /* Never wider than screen */
+    width: min(230px, calc(100vw - 20px));
+    max-width: calc(100vw - 20px);
 
     padding: 20px;
 
     background: #0d0d0d;
 
     border: 1px solid #2c2c2c;
-
     border-top: 2px solid #ffc400;
 
     opacity: 0;
-
     visibility: hidden;
 
     transform: translateY(-8px);
@@ -361,9 +331,7 @@ body {
 
 
 .profile-dropdown.active {
-
     opacity: 1;
-
     visibility: visible;
 
     transform: translateY(0);
@@ -371,11 +339,9 @@ body {
 
 
 .profile-dropdown-label {
-
     color: #ffc400;
 
     font-size: 10px;
-
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -385,11 +351,9 @@ body {
 
 
 .profile-dropdown-name {
-
     color: #ffffff;
 
     font-size: 17px;
-
     font-weight: 900;
 
     margin-bottom: 16px;
@@ -399,9 +363,7 @@ body {
 
 
 .profile-dropdown-line {
-
     width: 100%;
-
     height: 1px;
 
     background: #333333;
@@ -411,7 +373,6 @@ body {
 
 
 .profile-dropdown-link {
-
     display: block;
 
     color: #ffffff;
@@ -419,21 +380,20 @@ body {
     text-decoration: none;
 
     font-size: 13px;
-
     font-weight: 700;
 
     margin-bottom: 13px;
+
+    overflow-wrap: anywhere;
 }
 
 
 .profile-dropdown-link:hover {
-
     color: #ffc400;
 }
 
 
 .profile-logout {
-
     width: 100%;
 
     padding: 10px 0;
@@ -447,7 +407,6 @@ body {
     color: #ff2020;
 
     font-size: 12px;
-
     font-weight: 800;
 
     cursor: pointer;
@@ -455,18 +414,15 @@ body {
 
 
 .profile-logout:hover {
-
     background: #ff2020;
-
     color: #ffffff;
 }
 
 
 /* =========================================================
    HAMBURGER
-
-   ONLY ONE HAMBURGER EXISTS.
 ========================================================= */
+
 
 /* =========================================================
    SIDE MENU
@@ -478,10 +434,11 @@ body {
     top: 0;
     right: 0;
 
-    width: 360px;
-    max-width: 88vw;
+    /* Responsive width */
+    width: min(360px, 88vw);
 
-    height: 100vh;
+    /* Better mobile viewport support */
+    height: 100dvh;
 
     background: #0b0b0b;
 
@@ -496,6 +453,7 @@ body {
     z-index: 1200;
 
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
@@ -509,16 +467,18 @@ body {
 ========================================================= */
 
 .side-menu-content {
-
     width: 100%;
-
     min-height: 100%;
 
     display: flex;
-
     flex-direction: column;
 
-    padding: 120px 35px 40px;
+    padding:
+        clamp(100px, 12vh, 120px)
+        clamp(20px, 5vw, 35px)
+        40px;
+
+    overflow-x: hidden;
 }
 
 
@@ -528,25 +488,22 @@ body {
 ========================================================= */
 
 .side-profile {
-
     width: 100%;
 
     display: flex;
-
     align-items: center;
 
     gap: 14px;
 
     margin-bottom: 25px;
+
+    min-width: 0;
 }
 
 
 .side-profile-button {
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-decoration: none;
@@ -556,27 +513,25 @@ body {
 
 
 .side-profile-icon {
-
     width: 50px;
     height: 50px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     background: #151515;
 
     border: 2px solid #ffc400;
-
     border-radius: 50%;
 
     color: #ffc400;
+
+    flex-shrink: 0;
 }
 
 
 .side-profile-icon svg {
-
     width: 26px;
     height: 26px;
 
@@ -585,21 +540,19 @@ body {
 
 
 .side-profile-info {
-
     display: flex;
-
     flex-direction: column;
 
     gap: 5px;
+
+    min-width: 0;
 }
 
 
 .side-profile-label {
-
     color: #ffc400;
 
     font-size: 10px;
-
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -607,14 +560,14 @@ body {
 
 
 .side-profile-name {
-
     color: #ffffff;
 
     font-size: 16px;
-
     font-weight: 900;
 
     text-transform: uppercase;
+
+    overflow-wrap: anywhere;
 }
 
 
@@ -624,48 +577,61 @@ body {
 ========================================================= */
 
 .menu-auth-container {
-
     width: 100%;
 
     margin-bottom: 38px;
+
+    min-width: 0;
 }
 
 
 .menu-auth-buttons {
-
     width: 100%;
 
     display: flex;
 
     gap: 10px;
+
+    min-width: 0;
 }
 
 
+/* =========================================================
+   MENU AUTH BUTTONS
+========================================================= */
+
 .menu-login-button,
 .menu-signup-button {
+    /*
+       Important:
+       Both buttons share available width equally
+       without forcing the menu wider.
+    */
+    flex: 1 1 0;
 
-    flex: 1;
+    min-width: 0;
 
     height: 45px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+
+    padding: 0 8px;
 
     text-decoration: none;
 
-    font-size: 12px;
+    font-size: clamp(10px, 2.5vw, 12px);
 
     font-weight: 900;
 
     letter-spacing: 1px;
+
+    white-space: nowrap;
 }
 
 
 .menu-login-button {
-
     background: transparent;
 
     border: 1px solid #ffc400;
@@ -675,7 +641,6 @@ body {
 
 
 .menu-signup-button {
-
     background: #ffc400;
 
     border: 1px solid #ffc400;
@@ -689,7 +654,6 @@ body {
 ========================================================= */
 
 .menu-team-container {
-
     display: none;
 
     width: 100%;
@@ -699,21 +663,20 @@ body {
     background: #111111;
 
     border-left: 2px solid #ffc400;
+
+    min-width: 0;
 }
 
 
 .menu-team-container.active {
-
     display: block;
 }
 
 
 .menu-team-label {
-
     color: #ffc400;
 
     font-size: 9px;
-
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -723,14 +686,14 @@ body {
 
 
 .menu-team-name {
-
     color: #ffffff;
 
     font-size: 16px;
-
     font-weight: 900;
 
     text-transform: uppercase;
+
+    overflow-wrap: anywhere;
 }
 
 
@@ -740,11 +703,9 @@ body {
 ========================================================= */
 
 .menu-heading {
-
     color: #ffd000;
 
     font-size: 15px;
-
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -754,9 +715,7 @@ body {
 
 
 .menu-line {
-
     width: 100%;
-
     height: 1px;
 
     background: #353535;
@@ -771,33 +730,35 @@ body {
 ========================================================= */
 
 .menu-navigation {
-
     width: 100%;
 
     display: flex;
-
     flex-direction: column;
 
-    gap: 30px;
+    gap: clamp(20px, 4vw, 30px);
+
+    min-width: 0;
 }
 
 
 .menu-navigation a {
-
     color: #f2f2f2;
 
     text-decoration: none;
 
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
 
     font-weight: 800;
+
+    white-space: normal;
+
+    overflow-wrap: anywhere;
 
     transition: 0.25s ease;
 }
 
 
 .menu-navigation a:hover {
-
     color: #ff2020;
 
     transform: translateX(6px);
@@ -805,21 +766,123 @@ body {
 
 
 /* =========================================================
+   TABLET / SMALL LAPTOP
+   769px - 1024px
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .navbar-logo-section {
+        width: 25%;
+        flex-basis: 25%;
+    }
+
+    .navbar-right-section {
+        width: 75%;
+        flex-basis: 75%;
+
+        gap: 7px;
+
+        padding-left: 6px;
+        padding-right: 10px;
+    }
+
+    .navbar-login,
+    .navbar-signup {
+        padding-left: 12px;
+        padding-right: 12px;
+
+        font-size: 11px;
+    }
+
+    .navbar-profile {
+        width: 55px;
+    }
+}
+
+
+/* =========================================================
    MOBILE
 ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+
+    .main-navbar {
+        height: 80px;
+    }
+
+
+    /* -----------------------------------------
+       LOGO
+    ----------------------------------------- */
+
+    .navbar-logo-section {
+        width: 32%;
+        flex-basis: 32%;
+    }
+
+
+    /* -----------------------------------------
+       RIGHT NAVIGATION
+    ----------------------------------------- */
+
+    .navbar-right-section {
+        width: 68%;
+        flex-basis: 68%;
+
+        gap: 6px;
+
+        padding-left: 5px;
+        padding-right: 8px;
+    }
+
+
+    /* -----------------------------------------
+       AUTH BUTTONS
+    ----------------------------------------- */
+
+    .navbar-login,
+    .navbar-signup {
+        height: 40px;
+
+        padding-left: 9px;
+        padding-right: 9px;
+
+        font-size: 10px;
+
+        letter-spacing: 0.5px;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE
+    ----------------------------------------- */
+
+    .navbar-profile {
+        width: 48px;
+    }
+
+    .profile-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .profile-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    /* -----------------------------------------
+       SIDE MENU
+    ----------------------------------------- */
 
     .side-menu {
-
-        width: 85vw;
-
-        max-width: 340px;
+        width: min(360px, 88vw);
     }
 
 
     .side-menu-content {
-
         padding:
             105px
             25px
@@ -828,21 +891,256 @@ body {
 
 
     .side-profile-icon {
-
         width: 48px;
         height: 48px;
     }
 
 
     .menu-navigation {
-
         gap: 25px;
     }
 
 
     .menu-navigation a {
-
         font-size: 18px;
     }
+}
 
+
+/* =========================================================
+   VERY SMALL PHONES
+   480px and below
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .main-navbar {
+        height: 70px;
+    }
+
+
+    /* -----------------------------------------
+       LOGO
+    ----------------------------------------- */
+
+    .navbar-logo-section {
+        width: 35%;
+        flex-basis: 35%;
+    }
+
+
+    /* -----------------------------------------
+       RIGHT NAVIGATION
+    ----------------------------------------- */
+
+    .navbar-right-section {
+        width: 65%;
+        flex-basis: 65%;
+
+        gap: 4px;
+
+        padding-left: 4px;
+        padding-right: 5px;
+    }
+
+
+    /* -----------------------------------------
+       AUTH BUTTONS
+    ----------------------------------------- */
+
+    .navbar-login,
+    .navbar-signup {
+        height: 36px;
+
+        padding-left: 6px;
+        padding-right: 6px;
+
+        font-size: 9px;
+
+        letter-spacing: 0.5px;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE
+    ----------------------------------------- */
+
+    .navbar-profile {
+        width: 42px;
+    }
+
+    .profile-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .profile-button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE DROPDOWN
+    ----------------------------------------- */
+
+    .profile-dropdown {
+        top: 52px;
+
+        right: -5px;
+
+        width: min(230px, calc(100vw - 15px));
+
+        max-width: calc(100vw - 15px);
+
+        padding: 16px;
+    }
+
+
+    /* -----------------------------------------
+       SIDE MENU
+    ----------------------------------------- */
+
+    .side-menu {
+        width: 88vw;
+        max-width: 340px;
+    }
+
+
+    .side-menu-content {
+        padding:
+            95px
+            20px
+            30px;
+    }
+
+
+    .side-profile-icon {
+        width: 46px;
+        height: 46px;
+    }
+
+
+    /* -----------------------------------------
+       MENU AUTH BUTTONS
+    ----------------------------------------- */
+
+    .menu-auth-buttons {
+        gap: 7px;
+    }
+
+    .menu-login-button,
+    .menu-signup-button {
+        height: 42px;
+
+        padding-left: 5px;
+        padding-right: 5px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       MENU NAVIGATION
+    ----------------------------------------- */
+
+    .menu-navigation {
+        gap: 22px;
+    }
+
+    .menu-navigation a {
+        font-size: 18px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+   360px and below
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .main-navbar {
+        height: 65px;
+    }
+
+
+    .navbar-logo-section {
+        width: 37%;
+        flex-basis: 37%;
+    }
+
+
+    .navbar-right-section {
+        width: 63%;
+        flex-basis: 63%;
+
+        gap: 3px;
+
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+
+    .navbar-login,
+    .navbar-signup {
+        height: 34px;
+
+        padding-left: 4px;
+        padding-right: 4px;
+
+        font-size: 8px;
+
+        letter-spacing: 0;
+    }
+
+
+    .navbar-profile {
+        width: 38px;
+    }
+
+
+    .profile-button {
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .profile-button svg {
+        width: 16px;
+        height: 16px;
+    }
+
+
+    .side-menu {
+        width: 92vw;
+    }
+
+
+    .side-menu-content {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    .menu-auth-buttons {
+        gap: 5px;
+    }
+
+
+    .menu-login-button,
+    .menu-signup-button {
+        font-size: 9px;
+    }
+
+
+    .menu-navigation {
+        gap: 19px;
+    }
+
+
+    .menu-navigation a {
+        font-size: 17px;
+    }
 }
