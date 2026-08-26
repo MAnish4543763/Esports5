@@ -88,15 +88,6 @@ function isUserLoggedIn() {
 
 /* =========================================================
    GET TEAM NAME
-=========================================================
-
-   Your login/signup system should save the team name as:
-
-   localStorage.setItem(
-       "manifestTeamName",
-       teamName
-   );
-
 ========================================================= */
 
 function getTeamName() {
@@ -130,7 +121,7 @@ function updateLoginState() {
     if (loggedIn) {
 
 
-        /* ================================================
+        /* =================================================
            NAVBAR
 
            HIDE LOGIN + SIGN UP
@@ -144,7 +135,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            SHOW PROFILE IN NAVBAR
         ================================================= */
 
@@ -157,7 +148,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            NAVBAR PROFILE NAME
         ================================================= */
 
@@ -169,7 +160,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            SIDE MENU PROFILE
         ================================================= */
 
@@ -181,7 +172,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            HIDE LOGIN + SIGN UP
            FROM SIDE MENU
         ================================================= */
@@ -194,9 +185,8 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            SHOW TEAM NAME
-           WHERE LOGIN/SIGNUP WERE
         ================================================= */
 
         if (menuTeamContainer) {
@@ -225,7 +215,7 @@ function updateLoginState() {
     else {
 
 
-        /* ================================================
+        /* =================================================
            SHOW LOGIN + SIGN UP
            IN NAVBAR
         ================================================= */
@@ -238,7 +228,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            HIDE NAVBAR PROFILE
         ================================================= */
 
@@ -251,7 +241,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            SIDE MENU PROFILE = GUEST
         ================================================= */
 
@@ -263,7 +253,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            SHOW LOGIN + SIGN UP
            IN SIDE MENU
         ================================================= */
@@ -276,7 +266,7 @@ function updateLoginState() {
         }
 
 
-        /* ================================================
+        /* =================================================
            HIDE TEAM NAME
         ================================================= */
 
@@ -306,31 +296,53 @@ updateLoginState();
 
 function openMenu() {
 
-    if (!sideMenu || !menuToggle) {
+    if (
+        !sideMenu ||
+        !menuToggle
+    ) {
         return;
     }
 
+
+    /* -----------------------------------------
+       OPEN SIDE MENU
+    ----------------------------------------- */
 
     sideMenu.classList.add(
         "active"
     );
 
 
-    menuOverlay.classList.add(
-        "active"
-    );
+    /* -----------------------------------------
+       OPEN OVERLAY
+    ----------------------------------------- */
 
+    if (menuOverlay) {
+
+        menuOverlay.classList.add(
+            "active"
+        );
+
+    }
+
+
+    /* -----------------------------------------
+       HAMBURGER ACTIVE
+    ----------------------------------------- */
 
     menuToggle.classList.add(
         "active"
     );
 
 
+    /* -----------------------------------------
+       ACCESSIBILITY
+    ----------------------------------------- */
+
     menuToggle.setAttribute(
         "aria-expanded",
         "true"
     );
-
 
     menuToggle.setAttribute(
         "aria-label",
@@ -344,9 +356,9 @@ function openMenu() {
     );
 
 
-    /*
-        Prevent background scrolling
-    */
+    /* -----------------------------------------
+       PREVENT BACKGROUND SCROLL
+    ----------------------------------------- */
 
     document.body.style.overflow =
         "hidden";
@@ -360,31 +372,53 @@ function openMenu() {
 
 function closeMenu() {
 
-    if (!sideMenu || !menuToggle) {
+    if (
+        !sideMenu ||
+        !menuToggle
+    ) {
         return;
     }
 
+
+    /* -----------------------------------------
+       CLOSE SIDE MENU
+    ----------------------------------------- */
 
     sideMenu.classList.remove(
         "active"
     );
 
 
-    menuOverlay.classList.remove(
-        "active"
-    );
+    /* -----------------------------------------
+       CLOSE OVERLAY
+    ----------------------------------------- */
 
+    if (menuOverlay) {
+
+        menuOverlay.classList.remove(
+            "active"
+        );
+
+    }
+
+
+    /* -----------------------------------------
+       RESET HAMBURGER
+    ----------------------------------------- */
 
     menuToggle.classList.remove(
         "active"
     );
 
 
+    /* -----------------------------------------
+       ACCESSIBILITY
+    ----------------------------------------- */
+
     menuToggle.setAttribute(
         "aria-expanded",
         "false"
     );
-
 
     menuToggle.setAttribute(
         "aria-label",
@@ -398,9 +432,9 @@ function closeMenu() {
     );
 
 
-    /*
-        Restore scrolling
-    */
+    /* -----------------------------------------
+       RESTORE SCROLLING
+    ----------------------------------------- */
 
     document.body.style.overflow =
         "";
@@ -416,9 +450,18 @@ if (menuToggle) {
 
     menuToggle.addEventListener(
         "click",
-        function () {
+        function (event) {
+
+            /*
+             * Prevent this click from being
+             * treated as an outside click.
+             */
+
+            event.stopPropagation();
+
 
             if (
+                sideMenu &&
                 sideMenu.classList.contains(
                     "active"
                 )
@@ -426,7 +469,9 @@ if (menuToggle) {
 
                 closeMenu();
 
-            } else {
+            }
+
+            else {
 
                 openMenu();
 
@@ -446,10 +491,89 @@ if (menuOverlay) {
 
     menuOverlay.addEventListener(
         "click",
-        closeMenu
+        function (event) {
+
+            event.stopPropagation();
+
+            closeMenu();
+
+        }
     );
 
 }
+
+
+/* =========================================================
+   CLICK OUTSIDE SIDE MENU
+   CLOSE MENU
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        /*
+         * Menu isn't open.
+         */
+
+        if (
+            !sideMenu ||
+            !sideMenu.classList.contains(
+                "active"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Clicked inside side menu.
+         *
+         * DO NOT CLOSE.
+         */
+
+        if (
+            sideMenu.contains(
+                event.target
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Clicked hamburger.
+         *
+         * Hamburger has its own handler.
+         */
+
+        if (
+            menuToggle &&
+            menuToggle.contains(
+                event.target
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Everything else is outside
+         * the menu.
+         *
+         * CLOSE MENU.
+         */
+
+        closeMenu();
+
+    }
+);
 
 
 /* =========================================================
@@ -467,7 +591,11 @@ menuLinks.forEach(
 
         link.addEventListener(
             "click",
-            closeMenu
+            function () {
+
+                closeMenu();
+
+            }
         );
 
     }
@@ -484,6 +612,7 @@ document.addEventListener(
 
         if (
             event.key === "Escape" &&
+            sideMenu &&
             sideMenu.classList.contains(
                 "active"
             )
@@ -510,7 +639,29 @@ if (
         "click",
         function (event) {
 
+            /*
+             * Prevent document click from
+             * immediately closing dropdown.
+             */
+
             event.stopPropagation();
+
+
+            /*
+             * Close side menu if profile
+             * is opened.
+             */
+
+            if (
+                sideMenu &&
+                sideMenu.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeMenu();
+
+            }
 
 
             profileDropdown.classList.toggle(
@@ -585,9 +736,13 @@ if (logoutButton) {
                CLOSE PROFILE
             ============================================== */
 
-            profileDropdown.classList.remove(
-                "active"
-            );
+            if (profileDropdown) {
+
+                profileDropdown.classList.remove(
+                    "active"
+                );
+
+            }
 
 
             /* =============================================
